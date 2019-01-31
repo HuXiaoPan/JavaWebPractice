@@ -726,7 +726,11 @@ base 写到  <head>  </head>  之间
 
 # 表格 table(会使用)
 
-存在即是合理的。  表格的现在还是较为常用的一种标签，但不是用来布局，常见处理表格式数据。
+![img](http://zcr4.ncfstatic.com/attachment/201403/27/10/5333888008f05_thumb_670x0.jpg)
+
+
+
+存在即是合理的。  表格的现在还是较为常用的一种标签，但不是用来布局，常见处理、显示表格式数据。
 
 <img src="media/table.png" />
 
@@ -748,12 +752,14 @@ ps:  这些地方用表格，你会觉得生活还是那么美好。。。。忍
 </table>
 ```
 
-在上面的语法中包含三对HTML标签，分别为 &lt;table&gt;&lt;/table&gt;、&lt;tr&gt;&lt;/tr&gt;、&lt;td&gt;&lt;/td&gt;，他们是创建表格的基本标签，缺一不可，下面对他们进行具体地解释。
+在上面的语法中包含三对HTML标签，分别为 &lt;table&gt;</table&gt;、&lt;tr&gt;</tr&gt;、&lt;td&gt;</td&gt;，他们是创建表格的基本标签，缺一不可，下面对他们进行具体地解释
+
+
 
 ~~~
 1.table用于定义一个表格。
 
-2.tr 用于定义表格中的一行，必须嵌套在 table /table标签中，在 table /table中包含几对 tr /tr，就有几行表格。
+2.tr 用于定义表格中的一行，必须嵌套在 table标签中，在 table中包含几对 tr，就有几行表格。
 
 3.td /td：用于定义表格中的单元格，必须嵌套在<tr></tr>标签中，一对 <tr> </tr>中包含几对<td></td>，就表示该行中有多少列（或多少个单元格）。
 ~~~
@@ -776,7 +782,7 @@ ps:  这些地方用表格，你会觉得生活还是那么美好。。。。忍
 
 ## 表头标签
 
-表头一般位于表格的第一行或第一列，其文本加粗居中，如下图所示，即为设置了表头的表格。设置表头非常简单，只需用表头标签&lt;th&gt;&lt;/th&gt;替代相应的单元格标签&lt;td&gt;&lt;/td&gt;即可。
+表头一般位于表格的第一行或第一列，其文本加粗居中，如下图所示，即为设置了表头的表格。设置表头非常简单，只需用表头标签&lt;th&gt;</th&gt;替代相应的单元格标签&lt;td&gt;</td&gt;即可。
 
  <img src="media/th.png" />
 
@@ -801,7 +807,23 @@ ps:  这些地方用表格，你会觉得生活还是那么美好。。。。忍
 
 <img src="media/thead.png" />
 
-## 合并单元格
+## 表格标题
+
+**表格的标题： caption**
+
+**定义和用法**
+
+caption 元素定义表格标题。
+
+```html
+<table>
+   <caption>我是表格标题</caption>
+</table>
+```
+
+caption 标签必须紧随 table 标签之后。您只能对每个表格定义一个标题。通常这个标题会被居中于表格之上。
+
+## 合并单元格(难点)
 
 跨行合并：rowspan    跨列合并：colspan
 
@@ -811,12 +833,21 @@ ps:  这些地方用表格，你会觉得生活还是那么美好。。。。忍
 
 ​     公式：  删除的个数  =  合并的个数  - 1   
 
+   合并的顺序 先上   先左 
+
 ## 总结表格
 
 1. 表格提供了HTML 中定义表格式数据的方法。
+
 2. 表格中由行中的单元格组成。
+
 3. 表格中没有列元素，列的个数取决于行的单元格个数。
+
 4. 表格不要纠结于外观，那是CSS 的作用。
+
+   ​
+
+   **表格的学习要求：  能手写表格结构，并且能合并单元格。**
 
 # 表单标签(掌握)
 
@@ -918,12 +949,14 @@ for 属性规定 label 与哪个表单元素绑定。
 
 # HTML5新标签与特性
 
+<img src="media/html.jpg" />
+
 ## 文档类型设定
 
 - document
-  - HTML:
-  - XHTML:
-  - HTML5
+  - HTML:        sublime 输入  html:4s
+  - XHTML:      sublime 输入  html:xt
+  - HTML5        sublime 输入  html:5       <!DOCTYPE html>
 
 ## 字符设定
 
@@ -932,27 +965,60 @@ for 属性规定 label 与哪个表单元素绑定。
 
 ## 常用新标签
 
-- header：定义文档的页眉
+ w3c  手册中文官网     :   http://w3school.com.cn/
+
+- header：定义文档的页眉 头部
+
 - nav：定义导航链接的部分
-- footer：定义文档或节的页脚
-- article：标签规定独立的自包含内容
+
+- footer：定义文档或节的页脚 底部
+
+- article：定义文章。
+
 - section：定义文档中的节（section、区段）
-- aside：定义其所处内容之外的内容
 
-## 常用新属性
+- aside：定义其所处内容之外的内容 侧边
 
-| **属性******           | **用法******                               | **含义******                |
-| -------------------- | ---------------------------------------- | ------------------------- |
-| **placeholder******  | <input type="text" placeholder="请输入用户名"> | 占位符提供可描述输入字段预期值的提示信息      |
-| **autofocus******    | <input type="text" autofocus>            | 规定当页面加载时 input 元素应该自动获得焦点 |
-| **multiple******     | <input type="file" multiple>             | 多文件上传                     |
-| **autocomplete****** | <input type="text" autocomplete="off">   | 规定表单是否应该启用自动完成功能          |
-| **required******     | <input type="text" required>             | 必填项                       |
-| **accesskey******    | <input type="text" accesskey="s">        | 规定激活（使元素获得焦点）元素的快捷键       |
+  ~~~html
+  <header> 语义 :定义页面的头部  页眉</header>
+  <nav>  语义 :定义导航栏 </nav> 
+  <footer> 语义: 定义 页面底部 页脚</footer>
+  <article> 语义:  定义文章</article>
+  <section> 语义： 定义区域</section>
+  <aside> 语义： 定义其所处内容之外的内容 侧边</aside>
+  ~~~
 
+  ​
 
+- datalist   标签定义选项列表。请与 input 元素配合使用该元素
 
-## 新增的type属性值：
+  ~~~html
+  <input type="text" value="输入明星" list="star"/> <!--  input里面用 list -->
+  <datalist id="star">   <!-- datalist 里面用 id  来实现和 input 链接 -->  
+      		<option>刘德华</option>
+      		<option>刘若英</option>
+      		<option>刘晓庆</option>
+      		<option>郭富城</option>
+      		<option>张学友</option>
+      		<option>郭郭</option>
+  </datalist>
+  ~~~
+
+  ​
+
+- fieldset 元素可将表单内的相关元素分组，打包      legend 搭配使用
+
+  ~~~HTML
+  <fieldset>
+      		<legend>用户登录</legend>  标题
+      		用户名: <input type="text"><br /><br />
+      		密　码: <input type="password">
+  </fieldset>
+  ~~~
+
+  ​
+
+## 新增的input type属性值：
 
 | **类型******       | **使用示例******            | **含义****** |
 | ---------------- | ----------------------- | ---------- |
@@ -962,11 +1028,26 @@ for 属性规定 label 与哪个表单元素绑定。
 | **number******   | <input type="number">   | 输入数字格式     |
 | **search******   | <input type="search">   | 搜索框（体现语义化） |
 | **range******    | <input type="range">    | 自由拖动滑块     |
-| **time******     | <input type="time">     |            |
-| **date******     | <input type="date">     |            |
-| **datetime****** | <input type="datetime"> |            |
-| **month******    | <input type="month">    |            |
-| **week******     | <input type="week">     |            |
+| **time******     | <input type="time">     | 小时分钟       |
+| **date******     | <input type="date">     | 年月日        |
+| **datetime****** | <input type="datetime"> | 时间         |
+| **month******    | <input type="month">    | 月年         |
+| **week******     | <input type="week">     | 星期 年       |
+
+## 
+
+## 常用新属性
+
+| **属性******           | **用法******                               | **含义******                               |
+| -------------------- | ---------------------------------------- | ---------------------------------------- |
+| **placeholder******  | <input type="text" placeholder="请输入用户名"> | 占位符  当用户输入的时候 里面的文字消失  删除所有文字，自动返回       |
+| **autofocus******    | <input type="text" autofocus>            | 规定当页面加载时 input 元素应该自动获得焦点                |
+| **multiple******     | <input type="file" multiple>             | 多文件上传                                    |
+| **autocomplete****** | <input type="text" autocomplete="off">   | 规定表单是否应该启用自动完成功能  有2个值，一个是on 一个是off      on 代表记录已经输入的值  1.autocomplete 首先需要提交按钮 <br/>2.这个表单您必须给他名字 |
+| **required******     | <input type="text" required>             | 必填项  内容不能为空                              |
+| **accesskey******    | <input type="text" accesskey="s">        | 规定激活（使元素获得焦点）元素的快捷键   采用 alt + s的形式      |
+
+
 
 ## 综合案例
 
@@ -989,8 +1070,28 @@ for 属性规定 label 与哪个表单元素绑定。
     </datalist><br>
     <label for="score">入学成绩:</label>
     <input type="number" max="100" min="0" value="0" id="score"><br>
-    <label for="level">基础水平:</label>
-    <meter id="level" max="100" min="0" low="59" high="90"></meter><br>
+   <form action="">
+    <fieldset>
+    	<legend>学生档案思密达</legend>
+    	<label>姓名: <input type="text" placeholder="请输入学生名字"/></label> <br /><br />
+    	<label>手机号: <input type="tel" /></label> <br /><br />
+    	<label>邮箱: <input type="email" /></label> <br /><br />
+    	<label>所属学院:  <input type="text" placeholder="请选择学院" list="xueyuan"/>
+    	<datalist id="xueyuan">
+    		<option>java学院</option>
+    		<option>前端学院</option>
+    		<option>php学院</option>
+    		<option>设计学院</option>
+    	</datalist>
+
+    	<br /><br />
+
+    	<label>出生日期:   <input type="date" /></label> <br /><br />
+    	<label>成绩:  <input type="number" /></label> <br /><br />
+    	<label>毕业时间:  <input type="date" /></label> <br /><br />
+    	<input type="submit" />  <input type="reset" />
+    </fieldset>
+    </form>
     <label for="inTime">入学日期:</label>
     <input type="date" id="inTime" name="inTime"><br>
     <label for="leaveTime">毕业日期:</label>
@@ -1044,7 +1145,7 @@ autoplay 自动播放
 
 controls 是否显不默认播放控件
 
-loop 循环播放
+loop 循环播放   loop = 2 就是循环2次   loop  或者  loop = "-1"   无限循环
 
 由于版权等原因，不同的浏览器可支持播放的格式是不一样的，如下图供参考
 
@@ -1058,7 +1159,7 @@ loop 循环播放
 
 ### 多媒体 video
 
-HTML5通过<video>标签来解决音频播放的问题。
+HTML5通过<audio>标签来解决音频播放的问题。
 
 同音频播放一样，<video>使用也相当简单，如下图
 

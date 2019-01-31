@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <base href="_blank">
     <title>Document</title>
     <style>
         div {
@@ -32,7 +34,7 @@
         <p>第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段第二段</p>
         <hr>
         <h2>换行：</h2>
-        <div>这是一个文字块<br/>用来换行用
+        <div>这是一个文字块<br />用来换行用
             <p>p标签换行会有行间距</p>
         </div>
         <hr>
@@ -63,7 +65,7 @@
         <hr>
     </div>
     <div id="">
-        <h1 style="text-align:center;">多媒体标签</h1>
+        <h1 style="text-align:center;">图片、超链接标签</h1>
         <br>
         <h2>图像标签：</h2>
         <img src="media/dog.gif" alt="看不到图的时候会替换这个文字" title="鼠标移上去后会显示这个文字">
@@ -73,26 +75,452 @@
         <a href="#anchor1">锚点1</a><br />
         <a href="#anchor2">锚点2</a><br />
         <a href="#anchor3">锚点3</a><br />
-        HH[][][][][]
-        []HH[][][][]
-        [][]HH[][][]
-        [][][]HH[][]
-        [][][][]HH[]
-        [][][][][]HH
-        [][][][]HH[]
-        [][][]HH[][]
-        [][]HH[][][]
-        []HH[][][][]
-        
+        HH[][][][][]<br />
+        []HH[][][][]<br />
+        [][]HH[][][]<br />
+        [][][]HH[][]<br />
+        [][][][]HH[]<br />
+        [][][][][]HH<br />
+        [][][][]HH[]<br />
+        [][][]HH[][]<br />
+        [][]HH[][][]<br />
+        []HH[][][][]<br />
+        <p id="anchor1">锚点1</p>
+        HH[][][][][]<br />
+        []HH[][][][]<br />
+        [][]HH[][][]<br />
+        [][][]HH[][]<br />
+        [][][][]HH[]<br />
+        [][][][][]HH<br />
+        [][][][]HH[]<br />
+        [][][]HH[][]<br />
+        [][]HH[][][]<br />
+        []HH[][][][]<br />
+        <p id="anchor2">锚点2</p>
+        HH[][][][][]<br />
+        []HH[][][][]<br />
+        [][]HH[][][]<br />
+        [][][]HH[][]<br />
+        [][][][]HH[]<br />
+        [][][][][]HH<br />
+        [][][][]HH[]<br />
+        [][][]HH[][]<br />
+        [][]HH[][][]<br />
+        []HH[][][][]<br />
+        HH[][][][][]<br />
+        []HH[][][][]<br />
+        [][]HH[][][]<br />
+        [][][]HH[][]<br />
+        [][][][]HH[]<br />
+        [][][][][]HH<br />
+        [][][][]HH[]<br />
+        [][][]HH[][]<br />
+        [][]HH[][][]<br />
+        []HH[][][][]<br />
+        <p id="anchor3">锚点3</p>
+        HH[][][][][]<br />
+        []HH[][][][]<br />
+        [][]HH[][][]<br />
+        [][][]HH[][]<br />
+        [][][][]HH[]<br />
+        [][][][][]HH<br />
+        [][][][]HH[]<br />
+        [][][]HH[][]<br />
+        [][]HH[][][]<br />
+        []HH[][][][]<br />
+        <hr>
+        <h2>base标签：</h2>
+        <code>&lt;base href="_blank"&gt;</code>
+        <hr>
+        <h2>字符实体：</h2>
+        <table align="center" border="1" cellspacing="0" cellpadding="5" width="700" height="800">
+            <caption>
+                <h3>字符实体表</h3>
+            </caption>
+            <thead>
+                <tr>
+                    <th>显示结果</th>
+                    <th>描述</th>
+                    <th>实体名称</th>
+                    <th>实体编号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>' '</td>
+                    <td>空格</td>
+                    <td>&amp;nbsp;</td>
+                    <td>&amp;#160;</td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>小于号</td>
+                    <td>&amp;lt;</td>
+                    <td>&amp;#60;</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>大于号</td>
+                    <td>&amp;gt;</td>
+                    <td>&amp;#62;</td>
+                </tr>
+                <tr>
+                    <td>&amp;</td>
+                    <td>和号</td>
+                    <td>&amp;amp;</td>
+                    <td>&amp;#38;</td>
+                </tr>
+                <tr>
+                    <td>&quot;</td>
+                    <td>引号</td>
+                    <td>&amp;quot;</td>
+                    <td>&amp;#34;</td>
+                </tr>
+                <tr>
+                    <td>&apos;</td>
+                    <td>撇号</td>
+                    <td>&amp;apos; (IE不支持)</td>
+                    <td>&amp;#39;</td>
+                </tr>
+                <tr>
+                    <td>&cent;</td>
+                    <td>分（cent）</td>
+                    <td>&amp;cent;</td>
+                    <td>&amp;#162;</td>
+                </tr>
+                <tr>
+                    <td>&pound;</td>
+                    <td>磅（pound）</td>
+                    <td>&amp;pound;</td>
+                    <td>&amp;#163;</td>
+                </tr>
+                <tr>
+                    <td>&yen;</td>
+                    <td>元（yen）</td>
+                    <td>&amp;yen;</td>
+                    <td>&amp;#165;</td>
+                </tr>
+                <tr>
+                    <td>&euro;</td>
+                    <td>欧元（euro）</td>
+                    <td>&amp;euro;</td>
+                    <td>&amp;#8364;</td>
+                </tr>
+                <tr>
+                    <td>&sect;</td>
+                    <td>小节</td>
+                    <td>&amp;sect;</td>
+                    <td>&amp;#167;</td>
+                </tr>
+                <tr>
+                    <td>&copy;</td>
+                    <td>版权（copyright）</td>
+                    <td>&amp;copy;</td>
+                    <td>&amp;#169;</td>
+                </tr>
+                <tr>
+                    <td>&reg;</td>
+                    <td>注册商标</td>
+                    <td>&amp;reg;</td>
+                    <td>&amp;#174;</td>
+                </tr>
+                <tr>
+                    <td>&trade;</td>
+                    <td>商标</td>
+                    <td>&amp;trade;</td>
+                    <td>&amp;#8482;</td>
+                </tr>
+                <tr>
+                    <td>&times;</td>
+                    <td>乘号</td>
+                    <td>&amp;times;</td>
+                    <td>&amp;#215;</td>
+                </tr>
+                <tr>
+                    <td>&divide;</td>
+                    <td>除号</td>
+                    <td>&amp;divide;</td>
+                    <td>&amp;#247;</td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p>
+                            <em>更多字符实体参见文档</em>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2>注释标签：</h2>
+        <p>单行注释：<br />
+            <code>&lt;!--这里写注释...--&gt;</code>
+        </p>
+        <p>多行注释：<br />
+            <code>&lt;!--<br />这里写注释<br />... <br />--&gt;</code>
+        </p>
         <hr>
     </div>
     <div id="">
-            <h1 style="text-align:center;">标签的属性</h1>
-            <br>
-            <h2>表现形式：</h2>
-                <code><标签名 属性名1="属性值1" 属性名2="属性值2"...></code>
-            <hr>
-        </div>
+        <h1 style="text-align:center;">标签的属性</h1>
+        <br>
+        <h2>表现形式：</h2>
+        <code><标签名 属性名1="属性值1" 属性名2="属性值2"...></code>
+        <hr>
+    </div>
+    <div id="">
+        <h1 style="text-align:center;">路径</h1>
+        <br>
+        <h2>表现形式：</h2>
+        <code>
+                <h5>相对路径：</h5>
+                同级直接写file名<br />
+                上级../<br />
+                下级folder/<br />
+                <h5>绝对路径：</h5>
+                D:\BaiduNetdiskDownload\demo.exe
+            </code>
+        <hr>
+    </div>
+    <div id="">
+        <h1 style="text-align:center;">表格</h1>
+        <br>
+        <h2>表格示例：</h2>
+        <table align="center" border="1" cellspacing="0" cellpadding="5" width="700" height="400">
+            <caption>
+                <h3>字符实体表</h3>
+            </caption>
+            <thead>
+                <tr>
+                    <th>显示结果</th>
+                    <th>描述</th>
+                    <th>实体名称</th>
+                    <th>实体编号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>' '</td>
+                    <td>空格</td>
+                    <td>&amp;nbsp;</td>
+                    <td>&amp;#160;</td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>小于号</td>
+                    <td>&amp;lt;</td>
+                    <td>&amp;#60;</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>大于号</td>
+                    <td>&amp;gt;</td>
+                    <td>&amp;#62;</td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p>
+                            <em>更多字符实体参见文档</em>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>表格标签：</h2>
+        <p>table caption thead tbody tr th td</p>
+        <hr>
+        <h2>表格属性：</h2>
+        <p>border align cellspacing cellpadding width height </p>
+        <hr>
+        <h2>合并单元格：</h2>
+        <p>colspan rowspan</p>
+        <hr>
+    </div>
+    <div id="">
+        <h1 style="text-align:center;">表单</h1>
+        <br>
+        <h2>表单的组成：</h2>
+        <ol>
+            <li>表单域:form</li>
+            <li>提示文本:lable</li>
+            <li>表单控件:input textarea select</li>
+        </ol>
+        <hr>
+
+        <h2>input控件：</h2>
+
+        用户名：<input type="text" name="" id=""><br />
+        密&nbsp;&nbsp;&nbsp;码：<input type="password" name="" id=""><br />
+        性&nbsp;&nbsp;&nbsp;别：<input type="radio" name="sex" checked="checked">男<input type="radio" name="sex" id="">女<br />
+        爱&nbsp;&nbsp;&nbsp;好：<input type="checkbox" name="favo" id="">足球<input type="checkbox" name="favo" id="">篮球<br />
+        <h3>按钮类控件：</h3>
+        搜索：<input type="button" value="普通按钮"><br />
+        提交：<input type="submit" value="提交按钮"> <br />
+        重置：<input type="reset" value="重置按钮"> <br />
+        图片按钮：<input type="image" src="media/btnDemo.png"> <br />
+        文件域：<input type="file"> <br />
+
+        <hr>
+        <h2>lable标签：</h2>
+
+        <label>输入账号：<input type="text"></label><br />
+        <label for="two">输入账号：<input type="text" value="设定标签for将会在指定的控件显示焦点"><input type="text" id="two"></label>
+
+        <hr>
+        <h2>文本域：</h2>
+
+        留言板：<br />
+        <textarea>请输入留言</textarea>
+
+        <hr>
+        <h2>下拉菜单：</h2>
+
+        发达城市：<br />
+        <select>
+            <option>北京</option>
+            <option>上海</option>
+            <option>广东</option>
+            <option selected="selected">深圳</option>
+        </select>
+
+        <hr>
+        <h2>表单域：</h2>
+
+        <form action="demo.php" method="GET">
+            <label>用户名：<input type="text" name="userName"></label><br />
+            <label>密&nbsp;码：<input type="password" name="userPassword"></label><br />
+            <label><input type="submit" value="提交"></label>
+            <label><input type="reset" value="重置"></label>
+        </form>
+
+        <hr>
+    </div>
+    <div id="">
+        <h1 style="text-align:center;">HTML5新标签</h1><br>
+        <h2>之前的两个版本：</h2>
+        <p>xh和html4s</p>
+        <hr />
+        <h2>新标签：</h2>
+        <ul>
+            <li>header:页头页眉</li>
+            <li>nav:导航栏</li>
+            <li>footer:页底页脚</li>
+            <li>article:文章</li>
+            <li>section:小节区块</li>
+            <li>aside:侧边</li>
+            <li>datalist:配合input控件提示输入</li>
+            <li>feildset:input控件分组</li>
+        </ul>
+        <hr />
+        <h2>新标签demo：</h2>
+        <input type="text" value="请输入明星" list="star">
+        <datalist id="star">
+            <option>张三</option>
+            <option>张思</option>
+            <option>张武</option>
+            <option>李贰</option>
+            <option>李三</option>
+            <option>李四</option>
+        </datalist>
+        <fieldset>
+            <legend>用户登录</legend>
+            <label>用户名：<input type="text" name="" id=""></label><br />
+            <label>密码：<input type="password" name="" id=""></label>
+        </fieldset>
+        <hr />
+        <h2>新input：</h2>
+        <ul>
+            <li>email:邮箱</li>
+            <li>tel:手机</li>
+            <li>number:数字</li>
+            <li>url:网址</li>
+            <li>search:搜索</li>
+            <li>range:区域滑块</li>
+            <li>time:时刻</li>
+            <li>date:日期</li>
+            <li>datetime:日期时刻</li>
+            <li>month:月年</li>
+            <li>week:星期年</li>
+            <li>color:颜色</li>
+        </ul>
+        <hr />
+
+        <h2>新属性 ：</h2>
+        <ul>
+            <li>placeholder:占位符</li>
+            <li>autofocus:自动获得焦点</li>
+            <li>multiple:多文件上传</li>
+            <li>autocomplete:自动完成</li>
+            <li>required:必填</li>
+            <li>accesskey:快速定位</li>
+        </ul>
+        <hr />
+        <h2>新inputDemo：</h2>
+
+        <form action="demo.php" method="GET">
+            <fieldset>
+                <legend>html5新增的控件</legend>
+                <label>邮箱：<input type="email" autofocus="autofocus"></label><br />
+                <label>手机：<input type="tel"></label><br />
+                <label>数字：<input type="number"></label><br />
+                <label>网址：<input type="url"></label><br />
+                <label>搜索：<input type="search"></label><br />
+                <label>滑块：<input type="range"></label><br />
+                <label>时刻：<input type="time"></label><br />
+                <label>日期：<input type="date"></label><br />
+                <label>日期时刻：<input type="datetime"></label><br />
+                <label>月年：<input type="month"></label><br />
+                <label>星期年：<input type="week"></label><br />
+                <label>颜色：<input type="color"></label><br />
+            </fieldset>
+        </form>
+
+        <hr>
+        <h2>学生档案案例：</h2>
+
+        <form action="demo.php" method="GET">
+            <fieldset>
+                <legend>学生档案</legend>
+                <label>姓名：<input type="text" autofocus="autofocus" placeholder="请输入学生姓名"></label><br />
+                <label>手机：<input type="tel"></label><br />
+                <label>邮箱：<input type="email"></label><br />
+                <label>
+                    所属学院：<input type="text" list="school">
+                    <datalist id="school">
+                        <option>java学院</option>
+                        <option>前端学院</option>
+                        <option>php学院</option>
+                        <option>设计学院</option>
+                    </datalist>
+                </label><br />
+                <label>出生日期：<input type="date"></label><br />
+                <label>成绩：<input type="number"></label><br />
+                <input type="submit">
+                <input type="reset">
+            </fieldset>
+        </form>
+
+        <hr>
+    </div>
+    <div id="">
+        <h1 style="text-align:center;">多媒体标签</h1><br>
+        <h2>视频</h2>
+        引入网上视频: embed <br>
+        播放本地视频：video；<br>
+        兼容性同音频：<br>
+        <code>
+            &lt;video controls autoplay&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source src="某格式"/&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;source src="某格式"/&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;您的浏览器不支持视频播放<br>
+            &lt;video controls autoplay&gt;
+        </code>
+        <hr>
+        <h2>音频</h2>
+        背景音乐：audio (自动播放autoplay属性；controls显示控件；loop="-1"无限循环)<br>
+        为了浏览器兼容，做两种或三种音频格式
+        <hr>
+    </div>
 </body>
 
 </html>
