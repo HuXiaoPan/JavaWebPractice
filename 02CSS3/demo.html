@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="demo.css">
+
+    <style>
+        /*
+        标签选择器
+        */
+        h1 {
+            font-size: 72px;
+            color: rgba(239, 119, 212, 0.4);
+            text-align: center;
+            text-shadow: 3px 5px 4px rgba(50, 24, 1, 0.8);
+            /* 
+            多种字体以逗号隔开，特殊字符需要加引号
+            可以用unicode编码
+            font:(style) (weight) size/line-height family;
+            */
+            font-family: "0汉仪黑荔枝体简";
+        }
+        p {
+            font-size: 26px;
+            font-family: "0汉仪喵魂体W";
+            font-weight: bold;
+            font-style: italic;
+            line-height: 46px;
+            text-indent: 2em;
+            letter-spacing: 16px;
+            /* word-spacing: 18px;中文无效，英文的 */
+        }
+
+        span {
+            font-size: 100px;
+            font-weight: 900;
+
+        }
+
+        /* 类选择器 */
+        .colorF40 {
+            color: #f40;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .orange {
+            color: orange;
+        }
+
+        .font40 {
+            font-size: 40px;
+        }
+
+        /* id选择器 */
+        #fontSong {
+            font-family: "楷体";
+        }
+
+        /* 通配符选择器 */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* 
+        伪类选择器：
+        链接：未访问、以访问、被覆盖、正点击
+        */
+        a:link {
+            font-size: 16px;
+            color: gray;
+            font-weight: 700;
+        }
+
+        a:visited {
+            font-size: 16px;
+            color: orange;
+            font-weight: 700;
+        }
+
+        a:hover {
+            font-size: 16px;
+            color: red;
+            font-weight: 700;
+        }
+
+        a:active {
+            font-size: 16px;
+            color: green;
+            font-weight: 700;
+        }
+
+        /* 
+        结构伪类选择器：
+        :first-child;
+        :last-child;
+        :nth-child(n);
+        :nth-last-child(n);
+        */
+
+        /* 
+        目标伪类选择器：
+        :target;
+        */
+    </style>
+    <title>CSS3案例</title>
+</head>
+
+<body>
+    <h1 id="title">我是一个标题</h1>
+    <p>这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文这是一段正文</p>
+    <a href="http://www.baidu.com">这是一个超链接</a>
+    <p class="colorF40" id="fontSong">这是一段正文</p>
+    <p class="colorF40 font40">这是一段正文</p>
+    <span class="blue">G</span>
+    <span class="colorF40" style="font-size:100px;">o</span>
+    <span class="orange">o</span>
+    <span class="blue">g</span>
+    <span class="green">l</span>
+    <span class="colorF40">e</span>
+    <br />
+</body>
+
+</html>
