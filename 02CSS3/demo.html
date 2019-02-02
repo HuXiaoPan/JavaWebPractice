@@ -12,6 +12,7 @@
         /*
         标签选择器
         */
+        
         h1 {
             font-size: 72px;
             color: rgba(239, 119, 212, 0.4);
@@ -24,6 +25,7 @@
             */
             font-family: "0汉仪黑荔枝体简";
         }
+        
         p {
             font-size: 26px;
             font-family: "0汉仪喵魂体W";
@@ -34,73 +36,71 @@
             letter-spacing: 16px;
             /* word-spacing: 18px;中文无效，英文的 */
         }
-
+        
         span {
             font-size: 100px;
             font-weight: 900;
-
         }
-
         /* 类选择器 */
+        
         .colorF40 {
             color: #f40;
         }
-
+        
         .blue {
             color: blue;
         }
-
+        
         .green {
             color: green;
         }
-
+        
         .orange {
             color: orange;
         }
-
+        
         .font40 {
             font-size: 40px;
         }
-
         /* id选择器 */
+        
         #fontSong {
             font-family: "楷体";
         }
-
         /* 通配符选择器 */
+        
         * {
             margin: 0px;
             padding: 0px;
         }
-
         /* 
         伪类选择器：
         链接：未访问、以访问、被覆盖、正点击
         */
+        
         a:link {
             font-size: 16px;
             color: gray;
             font-weight: 700;
         }
-
+        
         a:visited {
             font-size: 16px;
             color: orange;
             font-weight: 700;
         }
-
+        
         a:hover {
             font-size: 16px;
             color: red;
             font-weight: 700;
         }
-
+        
         a:active {
             font-size: 16px;
             color: green;
             font-weight: 700;
         }
-
         /* 
         结构伪类选择器：
         :first-child;
@@ -108,7 +108,6 @@
         :nth-child(n);
         :nth-last-child(n);
         */
-
         /* 
         目标伪类选择器：
         :target;
@@ -130,6 +129,42 @@
     <span class="green">l</span>
     <span class="colorF40">e</span>
     <br />
+    <!-- 据说行级元素里只能放行级元素？ -->
+    <span style="background-color:red;margin: 50px;">我是inline<div style="background-color:yellow;margin: 50px;">我是block</div><span style="background-color:blue;margin: 50px;">我是子inline</span></span>
+    <hr>
+    <div class="one a big">123</div>
+    <div class="one b sml">456</div>
+    <div class="two c sml">789</div>
+    <hr>
+    <div id="bgdiv">
+        1231222222222222222222222222222222222222222222
+    </div>
+    <div id="bgdiv2">
+        1231222222222222222222222222222222222222222222
+    </div>
+    <div>
+        <ul>
+            <li>aaa</li>
+            <li>vvv</li>
+            <li>bbb
+                <ul class="item">
+                    <li>fadg</li>
+                    <li>sfdg</li>
+                    <li>sfdg</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <ul>
+        <li id="abc">aaa</li>
+        <li>ddd</li>
+        <li>fff</li>
+    </ul>
+    <hr>
+    <div id="凹凸">
+        <span>我是突起的文字</span>
+        <span>我是凹陷的文字</span>
+    </div>
 </body>
 
 </html>

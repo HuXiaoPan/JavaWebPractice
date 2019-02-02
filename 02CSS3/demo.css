@@ -1,3 +1,98 @@
+/* 外部样式表 */
+
 #title {
     letter-spacing: 2em;
+}
+
+
+/* 交集选择器 */
+
+.one.big {
+    width: 80px;
+    height: 60px;
+    background: red;
+}
+
+
+/* 并集选择器 */
+
+.b,
+.c {
+    color: aquamarine;
+}
+
+
+/* 后代选择器 */
+
+div li {
+    color: blueviolet;
+}
+
+
+/* 子元素选择器 */
+
+.item>li {
+    color: darkgoldenrod;
+}
+
+
+/* 属性选择器 */
+
+[id*="bc"] {
+    /*^开头 $结尾 *通配 */
+    font-size: 30px;
+}
+
+
+/* 伪元素选择器 */
+
+::first-letter {
+    color: darkgreen;
+    font-size: 60px;
+}
+
+::selection {
+    color: pink;
+}
+
+
+/* 背景图片 */
+
+body {
+    background-color: rgb(150, 236, 229);
+    background-image: url(../media/1.jpg);
+    background-repeat: no-repeat;
+    background-position: center 100px;
+}
+
+#bgdiv {
+    width: 500px;
+    height: 500px;
+    background-color: orange;
+    background-image: url(../media/ax.jpg);
+    background-repeat: no-repeat;
+    /* background-position: center left; */
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#bgdiv2 {
+    width: 500px;
+    height: 500px;
+    background-color: orangered;
+    background-image: url(../media/baby.jpeg);
+    background-repeat: no-repeat;
+    /* background-position: center left; */
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#凹凸>span:first-child,
+#凹凸>span:last-child {
+    color: rgb(150, 236, 229);
+    text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+}
+
+#凹凸>span:last-child {
+    text-shadow: 1px 1px 1px #fff, -1px -1px 1px #000;
 }
