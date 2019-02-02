@@ -87,11 +87,17 @@ body {
     background-size: cover;
 }
 
+
+/* css和html可以中文，但不推荐 */
+
 #凹凸>span:first-child,
 #凹凸>span:last-child {
     color: rgb(150, 236, 229);
     text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
 }
+
+
+/* 层叠性 */
 
 #凹凸>span:last-child {
     text-shadow: 1px 1px 1px #fff, -1px -1px 1px #000;
