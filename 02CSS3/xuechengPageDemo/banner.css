@@ -4,6 +4,7 @@
 }
 
 .banner-in {
+    position: relative;
     height: 420px;
     background: #1c036c url(res/images/banner_in.png) center center no-repeat;
 }
@@ -30,6 +31,37 @@
 
 .slidebar a:hover {
     color: #00a4ff;
+}
+
+.circles {
+    width: 180px;
+    height: 22px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -90px;
+}
+
+.circles li {
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+.circles li a {
+    display: block;
+    height: 12px;
+    width: 12px;
+    margin: 9px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
+
+.circles li a:hover {
+    width: 24px;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 9px auto;
+    border-radius: 6px;
 }
 
 .classTable {
