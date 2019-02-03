@@ -1,0 +1,92 @@
+.banner {
+    height: 420px;
+    background-color: #1c036c;
+}
+
+.banner-in {
+    height: 420px;
+    background: #1c036c url(res/images/banner_in.png) center center no-repeat;
+}
+
+.slidebar {
+    height: 420px;
+    width: 190px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
+    float: left;
+}
+
+.slidebar a {
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    line-height: 45px;
+}
+
+.slidebar span {
+    float: right;
+    font-family: arial;
+}
+
+.slidebar a:hover {
+    color: #00a4ff;
+}
+
+.classTable {
+    float: right;
+    width: 230px;
+    height: 300px;
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+.classTable dt {
+    height: 50px;
+    line-height: 50px;
+    background-color: #9bceea;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.classTable dd {
+    width: 193px;
+    height: 60px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ccc;
+    padding-top: 12px;
+    box-sizing: border-box;
+}
+
+.classTable dd h4 {
+    font-size: 16px;
+    font-weight: normal;
+    color: #4e4e4e;
+}
+
+.classTable dd p {
+    font-size: 14px;
+    font-weight: normal;
+    color: #a5a5a5;
+}
+
+.classTable dd:last-child {
+    border: 0px;
+}
+
+.classTable a {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border: 1px solid #00a4ff;
+    color: #00a4ff;
+    font-weight: 700;
+}
+
+.classTable a:hover {
+    background-color: #00a4ff;
+    color: #fff;
+}
