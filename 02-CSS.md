@@ -557,17 +557,7 @@ sublime可以快速提高我们代码的书写方式
 
 CSS可以写到那个位置？ 是不是一定写到html文件里面呢？
 
-## 行内式（内联样式）
-
-是通过标签的style属性来设置元素的样式，其基本语法格式如下：
-
-```
-<标签名 style="属性1:属性值1; 属性2:属性值2; 属性3:属性值3;"> 内容 </标签名>
-```
-
-语法中style是标签的属性，实际上任何HTML标签都拥有style属性，用来设置行内式。其中属性和值的书写规范与CSS样式规则相同，行内式只对其所在的标签及嵌套在其中的子标签起作用。
-
-## 内部样式表（内嵌式）
+## 内部样式表
 
 内嵌式是将CSS代码集中写在HTML文档的head头部标签中，并且用style标签定义，其基本语法格式如下：
 
@@ -580,6 +570,20 @@ CSS可以写到那个位置？ 是不是一定写到html文件里面呢？
 ```
 
 语法中，style标签一般位于head标签中title标签之后，也可以把他放在HTML文档的任何地方。
+
+type="text/CSS"  在html5中可以省略， 写上也比较符合规范， 所以这个地方可以写也可以省略。
+
+## 行内式（内联样式）
+
+内联样式，又有人称行内样式、行间样式、内嵌样式。是通过标签的style属性来设置元素的样式，其基本语法格式如下：
+
+```html
+<标签名 style="属性1:属性值1; 属性2:属性值2; 属性3:属性值3;"> 内容 </标签名>
+```
+
+语法中style是标签的属性，实际上任何HTML标签都拥有style属性，用来设置行内式。其中属性和值的书写规范与CSS样式规则相同，行内式只对其所在的标签及嵌套在其中的子标签起作用。
+
+
 
 ## 外部样式表（外链式）
 
@@ -606,7 +610,7 @@ rel：定义当前文档与被链接文档之间的关系，在这里需要指�
 | 样式表   | 优点           | 缺点           | 使用情况    | 控制范围      |
 | ----- | ------------ | ------------ | ------- | --------- |
 | 行内样式表 | 书写方便，权重高     | 没有实现样式和结构相分离 | 较少      | 控制一个标签（少） |
-| 内嵌样式表 | 部分结构和样式相分离   | 没有彻底分离       | 较多      | 控制一个页面（中） |
+| 内部样式表 | 部分结构和样式相分离   | 没有彻底分离       | 较多      | 控制一个页面（中） |
 | 外部样式表 | 完全实现结构和样式相分离 | 需要引入         | 最多，强烈推荐 | 控制整个站点（多） |
 
 # 标签显示模式（display）
@@ -703,15 +707,17 @@ HTML标签一般分为块标签和行内标签两种类型，它们也称块元�
 （3）高度，行高、外边距以及内边距都可以控制。
 ```
 
+<img src="media/lyc.jpg" width="400" />
 
+## 标签显示模式转换 display
 
-**三者的 形状**
+块转行内：display:inline;
 
-| 显示模式  | 形状   | 图片                                    |
-| ----- | ---- | ------------------------------------- |
-| 块级元素  | 面包   | ![img](media/b.png)                   |
-| 行内元素  | 牛奶   | <img src="media/m.png" width="250" /> |
-| 行内块元素 | 果冻   | ![img](media/g.png)                   |
+行内转块：display:block;
+
+块、行内元素转换为行内块： display: inline-block;
+
+此阶段，我们只需关心这三个，其他的是我们后面的工作。
 
 # CSS复合选择器
 
@@ -723,7 +729,7 @@ HTML标签一般分为块标签和行内标签两种类型，它们也称块元�
 
 <img src="media/jiao.png" />
 
-<strong>记忆技巧：</strong>
+**记忆技巧：**
 
 交集选择器 是 并且的意思。  即...又...的意思
 
@@ -784,12 +790,17 @@ HTML标签一般分为块标签和行内标签两种类型，它们也称块元�
 ```html
 <div class="nav">    <!-- 主导航栏 -->
   <ul>
-    <li>公司首页</li>
-    <li>公司简介</li>
-    <li>公司产品</li>
-    <li>联系我们</li>
+    <li><a href="#">公司首页</a></li>
+	<li><a href="#">公司简介</a></li>
+	<li><a href="#">公司产品</a></li>
+	<li>
+         <a href="#">联系我们</a>
+		 <ul>
+		    		<li><a href="#">公司邮箱</a></li>
+		    		<li><a href="#">公司电话</a></li>
+		 </ul>
+	</li>
   </ul>
-  <div> 收藏本站 </div>
 </div>
 <div class="sitenav">    <!-- 侧导航栏 -->
   <div class="site-l">左侧侧导航栏</div>
@@ -799,73 +810,46 @@ HTML标签一般分为块标签和行内标签两种类型，它们也称块元�
 
 在不修改以上代码的前提下，完成以下任务：
 
-1. 链接 登录 的颜色为红色。     
+1. 链接 登录 的颜色为红色,同时主导航栏里面的所有的链接改为蓝色     (简单)
 
-2. 主导航栏里面的文字颜色为绿色。
+2. 主导航栏和侧导航栏里面文字都是14像素并且是微软雅黑。（中等)
 
-3. 主导航栏和侧导航栏里面文字都是16像素并且是微软雅黑。
-
-4. 收藏本站  要求字体加粗。
+3. 主导航栏里面的一级菜单链接文字颜色为绿色。（难)
 
    ​
 
 ## 属性选择器
 
-| **选择器                 | **示例 | **含义                 |
-| --------------------- | ---- | -------------------- |
-| **E[attr]******       |      | 存在attr属性即可           |
-| **E[attr=val]******   |      | 属性值完全等于val           |
-| **E[attr\*=val]****** |      | 属性值里包含val字符并且在“任意”位置 |
-| **E[attr^=val]******  |      | 属性值里包含val字符并且在“开始”位置 |
-| **E[attr$=val]******  |      | 属性值里包含val字符并且在“结束”位置 |
+选取标签带有某些特殊属性的选择器 我们成为属性选择器
 
 ~~~css
 /* 获取到 拥有 该属性的元素 */
-li[type] {
-  border: 1px solid gray;
-}
-/* 获取 属性等于某个值的 元素 属性值 可以使用 引号进行包裹 */
-li[type="vegetable"] {
-  background-color: green;
-}
-/* 使用空格分隔的 多个属性 其中有某个属性即可获取 */
-li[type~="hot"] {
-  font-size: 40px;
-}
-/* 获取以某个属性开头的语法  */
-li[color^='green'] {
-  background-color: orange;
-}
-/* 获取以某个值 结尾的属性 */
-li[type$='t']{
-  color: hotpink;
-  font-weight: 900;
-}
-
-/* 获取 属性中 拥有某个值的 元素 */
-li[type*=ea] {
-  font-size: 100px;
-}
-/*  如果属性的值 只有very 也能够获取  用来获取 多个属性 并且 使用-连接 */
-li[price|='very'] {
-  background-color: darkred;
-}
+div[class^=font] { /*  class^=font 表示 font 开始位置就行了 */
+			color: pink;
+		}
+div[class$=footer] { /*  class$=footer 表示 footer 结束位置就行了 */
+			color: skyblue;
+		}
+div[class*=tao] { /* class*=tao  *=  表示tao 在任意位置都可以 */
+			color: green;
+		}
 ~~~
 
 ~~~html
-<ul>
-  <li type='fruit' color='green'>西瓜</li>
-  <li type='vegetable' color='greenyellow'>西兰花</li>
-  <li type='meat'>牛肉</li>
-  <li type='meat hot'>猪肉</li>
-  <li type='drink hot'>可乐</li>
-  <li type='drink hot'>雪碧</li>
-  <li price='very-cheap'>红酒</li>
-  <li price='very'>白酒</li>
-</ul>
+<div class="font12">属性选择器</div>
+    <div class="font12">属性选择器</div>
+    <div class="font24">属性选择器</div>
+    <div class="font24">属性选择器</div>
+    <div class="font24">属性选择器</div>
+    <div class="24font">属性选择器123</div>
+    <div class="sub-footer">属性选择器footer</div>
+    <div class="jd-footer">属性选择器footer</div>
+    <div class="news-tao-nav">属性选择器</div>
+    <div class="news-tao-header">属性选择器</div>
+    <div class="tao-header">属性选择器</div>
 ~~~
 
-### 伪元素选择器（CSS3)
+## 伪元素选择器（CSS3)
 
 1. E::first-letter文本的第一个单词或字（如中文、日文、韩文等）
 2. E::first-line 文本第一行；
@@ -910,6 +894,90 @@ E:after、E:before 在旧版本里是伪元素，CSS3的规范里“:”用来�
 E:after、E:before后面的练习中会反复用到，目前只需要有个大致了解
 
 ":" 与 "::" 区别在于区分伪类和伪元素
+
+# CSS书写规范
+
+开始就形成良好的书写规范，是你专业化的开始。
+
+## 空格规范
+
+【强制】 选择器 与 { 之间必须包含空格。
+
+示例： .selector { }
+
+【强制】 属性名 与之后的 : 之间不允许包含空格， : 与 属性值 之间必须包含空格。
+
+示例：
+
+font-size: 12px;
+
+## 选择器规范
+
+【强制】 当一个 rule 包含多个 selector 时，每个选择器声明必须独占一行。
+
+示例：
+
+```
+/* good */
+.post,
+.page,
+.comment {
+    line-height: 1.5;
+}
+
+
+/* bad */
+.post, .page, .comment {
+    line-height: 1.5;
+}
+```
+
+【建议】 选择器的嵌套层级应不大于 3 级，位置靠后的限定条件应尽可能精确。
+
+示例：
+
+```
+/* good */
+#username input {}
+.comment .avatar {}
+
+/* bad */
+.page .header .login #username input {}
+.comment div * {}
+```
+
+## 属性规范
+
+【强制】 属性定义必须另起一行。
+
+示例：
+
+```
+/* good */
+.selector {
+    margin: 0;
+    padding: 0;
+}
+
+/* bad */
+.selector { margin: 0; padding: 0; }
+```
+
+【强制】 属性定义后必须以分号结尾。
+
+示例：
+
+```
+/* good */
+.selector {
+    margin: 0;
+}
+
+/* bad */
+.selector {
+    margin: 0
+}
+```
 
 # CSS 背景(background)
 
@@ -963,7 +1031,7 @@ repeat-y : 　背景图像在纵向平铺
 
 repeat-x : 　背景图像在横向上平铺  
 
-<img src="media/x.png" width="600" />
+
 
 repeat-y : 　背景图像在纵向平铺 
 
@@ -981,7 +1049,6 @@ repeat-y : 　背景图像在纵向平铺
 background-position : length || length
 
 background-position : position || position 
-
 ~~~
 
 参数： 
@@ -1042,12 +1109,9 @@ background: rgba(0,0,0,0.3);
 
  注意：  背景半透明是指盒子背景半透明， 盒子里面的内容不收影响。
 
-同样， 可以给 文字和边框透明  都是 rgba 的格式来写。
 
-~~~css
-color:rgba(0,0,0,0.3);
-border: 1px solid rgba(0,0,0,0.3);
-~~~
+
+
 
 
 
@@ -1059,7 +1123,7 @@ border: 1px solid rgba(0,0,0,0.3);
 
 a) 可以设置长度单位(px)或百分比（设置百分比时，参照盒子的宽高）
 
-b) 设置为cover时，会自动调整缩放比例，保证图片始终填充满背景区域，如有溢出部分则会被隐藏。
+b) 设置为cover时，会自动调整缩放比例，保证图片始终填充满背景区域，如有溢出部分则会被隐藏。我们平时用的cover 最多
 
 c) 设置为contain会自动调整缩放比例，保证图片始终完整显示在背景区域。
 
@@ -1072,11 +1136,104 @@ background-image: url('images/gyt.jpg');
 
 ## 多背景(CSS3)
 
-以逗号分隔可以设置多背景，可用于自适应布局
+以逗号分隔可以设置多背景，可用于自适应布局  做法就是 用逗号隔开就好了。
+
+- 一个元素可以设置多重背景图像。 
+- 每组属性间使用逗号分隔。 
+- 如果设置的多重背景图之间存在着交集（即存在着重叠关系），前面的背景图会覆盖在后面的背景图之上。
+- 为了避免背景色将图像盖住，背景色通常都定义在最后一组上，
 
 ~~~css
-background-image: url('images/gyt.jpg'),url('images/robot.png');
+background:url(test1.jpg) no-repeat scroll 10px 20px/50px 60px  ,
+	   url(test1.jpg) no-repeat scroll 10px 20px/70px 90px ,
+	   url(test1.jpg) no-repeat scroll 10px 20px/110px 130px c #aaa;
 ~~~
+
+- ​
+
+## 凹凸文字
+
+~~~css
+<head>
+        <meta charset="utf-8">
+        <style>
+        body {
+        	background-color: #ccc;
+        }
+		div {
+			color: #ccc;
+			font: 700 80px "微软雅黑";
+		}
+		div:first-child {
+			/* text-shadow: 水平位置  垂直位置  模糊距离 阴影颜色; */
+			text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+		}
+		div:last-child {
+			/* text-shadow: 水平位置  垂直位置  模糊距离 阴影颜色; */
+			text-shadow: -1px -1px 1px #000, 1px 1px 1px #fff;
+		}
+
+        </style>
+    </head>
+    <body>
+    <div>我是凸起的文字</div>
+    <div>我是凹下的文字</div>
+    </body>
+~~~
+
+![1498467533412](media/1498467533412.png)
+
+
+
+## 导航栏案例
+
+### 文本的装饰
+
+text-decoration   通常我们用于给链接修改装饰效果
+
+| 值            | 描述                      |
+| ------------ | ----------------------- |
+| none         | 默认。定义标准的文本。             |
+| underline    | 定义文本下的一条线。下划线 也是我们链接自带的 |
+| overline     | 定义文本上的一条线。              |
+| line-through | 定义穿过文本下的一条线。            |
+|              |                         |
+|              |                         |
+
+**使用技巧**：在一行内的盒子内，我们设定行高等于盒子的高度，就可以使文字垂直居中。
+
+~~~html
+<head>
+        <meta charset="utf-8">
+        <style>
+		body {
+			background-color: #000;
+		}
+		a {
+			width: 200px;
+			height: 50px;
+			/* background-color: orange; */
+			display: inline-block;  /* 把a 行内元素转换为行内块元素 */
+			text-align: center;  /* 文字水平居中 */
+			line-height: 50px;  /* 我们设定行高等于盒子的高度，就可以使文字垂直居中 */
+			color: #fff;
+			font-size: 22px;
+			text-decoration: none;  /* 取消下划线 文本装饰 */
+		}
+		a:hover {  /* 鼠标经过 给我们的链接添加背景图片*/
+			background: url(images/h.png) no-repeat; 
+		}
+        </style>
+    </head>
+    <body>
+    <a href="#">专区说明</a>
+    <a href="#">申请资格</a>
+    <a href="#">兑换奖励</a>
+    <a href="#">下载游戏</a>
+    </body>
+~~~
+
+
 
 # CSS 三大特性
 
@@ -1086,11 +1243,14 @@ background-image: url('images/gyt.jpg'),url('images/robot.png');
 
 所谓层叠性是指多种CSS样式的叠加。
 
-是浏览器处理冲突的一个能力,如果一个属性通过两个选择器设置到同一个元素上，那么这个时候一个属性就会将另一个属性层叠掉
+是浏览器处理冲突的一个能力,如果一个属性通过两个相同选择器设置到同一个元素上，那么这个时候一个属性就会将另一个属性层叠掉
 
 比如先给某个标签指定了内部文字颜色为红色，接着又指定了颜色为蓝色，此时出现一个标签指定了相同样式不同值的情况，这就是样式冲突。
 
 一般情况下，如果出现样式冲突，则会按照CSS书写的顺序，以最后的样式为准。
+
+1. 样式冲突，遵循的原则是就近原则。 那个样式离着结构近，就执行那个样式。
+2. 样式不冲突，不会层叠
 
 ~~~
 CSS最后的执行口诀：  长江后浪推前浪，前浪死在沙滩上。
@@ -1134,7 +1294,7 @@ CSS定义了一个!important命令，该命令被赋予最大的优先级。也�
 
 
 
-## CSS特殊性（Specificity）
+### CSS特殊性（Specificity）
 
 关于CSS权重，我们需要一套计算公式来去计算，这个就是 CSS Specificity，我们称为CSS 特性或称非凡性，它是一个衡量CSS值优先级的一个标准 具体规范入如下：
 
@@ -1147,6 +1307,10 @@ specificity用一个四位的数 字串(CSS2是三位)来表示，更像四个�
 | 每个ID贡献值为        | 0,1,0,0 |
 | 每个行内样式贡献值       | 1,0,0,0 |
 | 每个!important贡献值 | ∞ 无穷大   |
+
+
+
+权重是可以叠加的
 
  比如的例子：
 
@@ -1162,9 +1326,15 @@ a:hover      -----—>      0,0,1,1
 #nav p       ----->       0,1,0,1
  ~~~
 
-​          
+​   
 
- <img src="media/w.jpg" /> 注意： 数位之间没有进制 比如说： 0,0,0,5 + 0,0,0,5 =0,0,0,10 而不是 0,0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。
+​      
+
+ <img src="media/w.jpg" /> 注意： 
+
+1.数位之间没有进制 比如说： 0,0,0,5 + 0,0,0,5 =0,0,0,10 而不是 0,0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。
+
+2. 继承的 权重是 0
 
 总结优先级：
 
@@ -1174,6 +1344,7 @@ a:hover      -----—>      0,0,1,1
 4. 使用了类选择器、属性选择器、伪元素和伪类选择器的规则。
 5. 使用了元素选择器的规则。
 6. 只包含一个通用选择器的规则。
+7. 同一类选择器则遵循就近原则。
 
 ~~~
 总结：权重是优先级的算法，层叠是优先级的表现
@@ -1219,9 +1390,7 @@ CSS 其实没有太多逻辑可言 ， 类似我们小时候玩的积木,我们�
 
 <img src="media/d.jpg" />
 
-CSS3的 盒子模型 我们后面会讲。
-
-首先，我们来看一张图，来体会下什么是盒子模型。
+。首先，我们来看一张图，来体会下什么是盒子模型。
 
 <img src="media/box.png"  width="700" />
 
@@ -1248,22 +1417,16 @@ none：没有边框即忽略所有边框的宽度（默认值）
 
 solid：边框为单实线(最为常用的)
 
-dashed：边框为虚线
+dashed：边框为虚线  
 
 dotted：边框为点线
 
 double：边框为双实线
 ~~~
 
-### 表格的细线边框
 
-以前学过的html表格边框很粗，这里只需要CSS一句话就可以美观起来。 让我们真的相信，CSS就是我们的白马王子（白雪公主）。
 
-table{ border-collapse:collapse; }
-
-border-collapse:collapse; 表示边框合并在一起。
-
-### 盒子边框总结表
+### 盒子边框写法总结表
 
 |        |                                          |                                          |
 | ------ | ---------------------------------------- | ---------------------------------------- |
@@ -1277,17 +1440,19 @@ border-collapse:collapse; 表示边框合并在一起。
 | 颜色综合设置 | border-color:上边 [右边 下边 左边];              | 颜色值、#十六进制、rgb(r,g,b)、rgb(r%,g%,b%)       |
 | 边框综合设置 | border:四边宽度 四边样式 四边颜色;                   |                                          |
 
+### 表格的细线边框
+
+以前学过的html表格边框很粗，这里只需要CSS一句话就可以美观起来。 让我们真的相信，CSS就是我们的白马王子（白雪公主）。
+
+table{ border-collapse:collapse; }  collapse 单词是合并的意思
+
+border-collapse:collapse; 表示边框合并在一起。
+
 ### 圆角边框(CSS3)
 
-从此以后，我们的世界不只有矩形。
+从此以后，我们的世界不只有矩形。radius 半径（距离）
 
 语法格式：
-
-~~~css
-Border-radius: 水平半径/垂直半径；
-~~~
-
- 一般我们垂直半径都是省略的默认和水平半径一样。
 
 ~~~css
 border-radius: 左上角  右上角  右下角  左下角;
@@ -1297,49 +1462,38 @@ border-radius: 左上角  右上角  右下角  左下角;
 
 ~~~html
 <style>
-  div {
-    width:200px;
-    height:200px;
-    border:1px solid red;
-    margin:10px 40px;
-    text-align: center;
-    line-height: 200px;
-  }
-  div:first-child {
-    border:10px solid red;
-    border-radius: 20px/50px;
-  }
-  div:nth-child(2) {
-    border-radius: 20px;
-  }
-  div:nth-child(3) {
-    border-radius: 15px 0;
-  }
-  div:nth-child(4) {
-    border-radius:100px;
-  }
-  div:nth-child(5) {
-    border-radius: 50%;
-  }
-  div:nth-child(6) {
-    border-radius: 100px 0;
-  }
-  div:nth-child(7) {
-    border-radius: 200px 0 0 0;
-  }
-  div:nth-child(8) {
-    border-radius: 100px 100px 0 0;
-    height:100px;  /*高度减半*/
-  }
-  div:nth-child(9) {
-    border-radius: 100px;
-    height:100px;
-  }
-  div:nth-child(10) {
-    border-radius: 100%;
-    height:100px;
-  }
-</style
+		div {
+			width: 200px;
+			height: 200px;
+			border: 1px solid red;
+		}
+		div:first-child {  /* 结构伪类选择器 选亲兄弟 */
+			border-radius: 10px;  /*  一个数值表示4个角都是相同的 10px 的弧度 */ 
+		}
+
+		div:nth-child(2) {
+			/*border-radius: 100px;    取宽度和高度 一半  则会变成一个圆形 */
+			border-radius: 50%;   /*  100px   50% 取宽度和高度 一半  则会变成一个圆形 */
+		}
+
+		div:nth-child(3) {
+			border-radius: 10px 40px;  /* 左上角  和 右下角  是 10px  右上角 左下角 40 对角线 */
+		}
+		
+		div:nth-child(4) {
+			border-radius: 10px 40px  80px;   /* 左上角 10    右上角  左下角 40   右下角80 */
+		}
+		div:nth-child(5) {
+			border-radius: 10px 40px  80px  100px;   /* 左上角 10    右上角 40  右下角 80   左下角   右下角100 */
+		}
+		div:nth-child(6) {
+			border-radius: 100px;  
+			height: 100px; 
+		}
+		div:nth-child(7) {
+			border-radius: 100px 0;  
+		}	
+        </style>
 ~~~
 
 
@@ -1348,7 +1502,7 @@ border-radius: 左上角  右上角  右下角  左下角;
 
 padding属性用于设置内边距。  是指 边框与内容之间的距离。
 
-<img src="media/pa.png" />   panda
+
 
 padding-top:上内边距
 
@@ -1394,13 +1548,47 @@ margin:上外边距 右外边距  下外边距  左外边
 1. 必须是块级元素。     
 2. 盒子必须指定了宽度（width）
 
-然后就给左右的外边距都设置为auto，就可使块级元素水平居中。
+然后就给**左右的外边距都设置为auto**，就可使块级元素水平居中。
 
 实际工作中常用这种方式进行网页布局，示例代码如下：
 
 ~~~css
 .header{ width:960px; margin:0 auto;}
 ~~~
+
+### 文字盒子居中图片和背景区别
+
+1.  文字水平居中是  text-align: center
+2.  盒子水平居中  左右margin 改为 auto 
+
+~~~css
+text-align: center; /*  文字居中水平 */
+margin: 10px auto;  /* 盒子水平居中  左右margin 改为 auto 就阔以了 */
+~~~
+
+3. 插入图片 我们用的最多 比如产品展示类
+4. 背景图片我们一般用于小图标背景 或者 超大背景图片
+
+~~~css
+section img {  
+		width: 200px;/* 插入图片更改大小 width 和 height */
+		height: 210px;
+		margin-top: 30px;  /* 插入图片更改位置 可以用margin 或padding  盒模型 */
+		margin-left: 50px; /* 插入当图片也是一个盒子 */
+	}
+
+aside {
+		width: 400px;
+		height: 400px;
+		border: 1px solid purple;
+		background: #fff url(images/sun.jpg) no-repeat;
+	
+		background-size: 200px 210px; /*  背景图片更改大小只能用 background-size */
+		background-position: 30px 50px; /* 背景图片更该位置 我用 background-position */
+	}
+~~~
+
+
 
 ### 清除元素的默认内外边距
 
@@ -1413,7 +1601,9 @@ margin:上外边距 右外边距  下外边距  左外边
 }
 ~~~
 
-注意：  行内元素是只有左右内外边距的，是没有上下内外边距的。
+注意：  行内元素是只有左右外边距的，是没有上下外边距的。 内边距，在ie6等低版本浏览器也会有问题。
+
+我们尽量不要给行内元素指定上下的内外边距就好了。
 
 ## 外边距合并
 
@@ -1423,7 +1613,7 @@ margin:上外边距 右外边距  下外边距  左外边
 
 当上下相邻的两个块元素相遇时，如果上面的元素有下外边距margin-bottom，下面的元素有上外边距margin-top，则他们之间的垂直间距不是margin-bottom与margin-top之和，而是两者中的较大者。这种现象被称为相邻块元素垂直外边距的合并（也称外边距塌陷）。
 
-<img src="media/w.png" />
+<img src="media/www.png" />
 
 解决方案：  避免就好了。
 
@@ -1448,13 +1638,14 @@ width和height的属性值可以为不同单位的数值或相对于父元素的
 
 大多数浏览器，如Firefox、IE6及以上版本都采用了W3C规范，符合CSS规范的盒子模型的总宽度和总高度的计算原则是：
 
-~~~
-盒子的总宽度= width+左右内边距之和+左右边框宽度之和+左右外边距之和
-~~~
-
-~~~
-盒子的总高度= height+上下内边距之和+上下边框宽度之和+上下外边距之和
-~~~
+```
+  /*外盒尺寸计算（元素空间尺寸）*/
+  Element空间高度 = content height + padding + border + margin
+  Element 空间宽度 = content width + padding + border + margin
+  /*内盒尺寸计算（元素实际大小）*/
+  Element Height = content height + padding + border （Height为内容高度）
+  Element Width = content width + padding + border （Width为内容宽度）
+```
 
 注意：
 
@@ -1462,15 +1653,7 @@ width和height的属性值可以为不同单位的数值或相对于父元素的
 
 2、计算盒子模型的总高度时，还应考虑上下两个盒子垂直外边距合并的情况。
 
-## 三个计算题
-
-~~~
-1. .demo{width:200px;height:200px;border:1px solid red; padding:20px;}， 盒子最终占有的空间是多大？
-2. 一个盒子需要占用的空间是 400像素， 但是盒子又有 padding:25px, border: 1px solid red; 问，我们需要改动盒子宽度为多少？
-3. 如何让一个200 * 200像素的盒子， 在一个400 * 400的盒子里面水平居中，垂直居中。
-~~~
-
-
+3、**如果一个盒子没有给定宽度/高度或者继承父亲的宽度/高度，则padding 不会影响本盒子大小**。
 
 ## 盒子模型布局稳定性
 
@@ -1503,31 +1686,31 @@ CSS3中可以通过box-sizing 来指定盒模型，即可指定为content-box、
 
 可以分成两种情况：
 
-1、box-sizing: border-box  盒子大小为 width
+1、box-sizing: content-box  盒子大小为 width + padding + border   content-box:此值为其默认值，其让元素维持W3C的标准Box Mode
 
-2、box-sizing: content-box  盒子大小为 width + padding + border
+2、box-sizing: border-box  盒子大小为 width    就是说  padding 和 border 是包含到width里面的
 
 注：上面的标注的width指的是CSS属性里设置的width: length，content的值是会自动调整的。
 
 ~~~css
-div {
-  width: 100px;
-  height: 100px;
-  background: skyblue;
-  margin: 0 auto;
-  border: 1px solid gray;
-
-  /* 
-  默认的设置 如果我们添加了 border属性 该容器的大小会发生改变
-  因为他要优先保证内部的内容所占区域 不变
-  */
-
-  /*  
-  box-sizing  如果不设置 默认的值 就是 
-  content-box: 优先保证内容的大小 对盒子进行缩放;
-  border-box: 让 盒子 优先保证自己所占区域的大小,对内容进行压缩;
-  */
-  box-sizing: border-box;
+div:first-child {
+			width: 200px;
+			height: 200px;
+			background-color: pink; 
+			box-sizing: content-box;  /*  就是以前的标准盒模型  w3c */
+			padding: 10px;
+			border: 15px solid red;
+			/* 盒子大小为 width + padding + border   content-box:此值为其默认值，其让元素维持W3C的标准Box Mode */
+		}
+		div:last-child {
+			width: 200px;
+			height: 200px;
+			background-color: purple;
+			padding: 10px;
+			box-sizing: border-box;   /* padding border  不撑开盒子 */
+			border: 15px solid red;
+			/* margin: 10px; */
+			/* 盒子大小为 width    就是说  padding 和 border 是包含到width里面的 */
 }
 ~~~
 
@@ -1545,9 +1728,14 @@ box-shadow:水平阴影 垂直阴影 模糊距离 阴影尺寸 阴影颜色  内
 2. 外阴影 (outset) 但是不能写    默认      想要内阴影  inset 
 
 ~~~css
-img {
-  border:10px solid orange;
-  box-shadow:3px 3px 5px 4px rgba(0,0,0,1);
+div {
+			width: 200px;
+			height: 200px;
+			border: 10px solid red;
+			/* box-shadow: 5px 5px 3px 4px rgba(0, 0, 0, .4);  */
+			/* box-shadow:水平位置 垂直位置 模糊距离 阴影尺寸（影子大小） 阴影颜色  内/外阴影； */
+			box-shadow: 0 15px 30px  rgba(0, 0, 0, .4);
+			
 }
 ~~~
 
@@ -1593,6 +1781,8 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 ## 浮动详细内幕特性
 
+浮动脱离标准流，不占位置，会影响标准流。浮动只有左右浮动。
+
 ```
 浮动首先创建包含块的概念（包裹）。就是说， 浮动的元素总是找理它最近的父级元素对齐。但是不会超出内边距的范围。 
 ```
@@ -1613,27 +1803,57 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 由2可以推断出，一个父盒子里面的子盒子，如果其中一个子级有浮动的，则其他子级都需要浮动。这样才能一行对齐显示。
 ```
 
-~~~
-浮动脱离标准流，不占位置，会影响标准流。浮动只有左右浮动。
-~~~
-
 ```
-元素添加浮动后，元素会具有行内块元素的特性。元素的大小完全取决于定义的大小或者默认的内容多少
+元素添加浮动后，元素会具有行内块元素的特性。元素的大小完全取决于定义的大小或者默认的内容多少浮动根据元素书写的位置来显示相应的浮动。
 ```
 
-~~~
-浮动根据元素书写的位置来显示相应的浮动。
-~~~
+总结：  浮动 --->    
 
-总结：  浮动 --->  浮漏特       
+浮动的目的就是为了让多个块级元素同一行上显示。
+
+float      浮 漏 特   
 
 浮：    加了浮动的元素盒子是浮起来的，漂浮在其他的标准流盒子上面。
 漏：    加了浮动的盒子，不占位置的，它浮起来了，它原来的位置漏 给了标准流的盒子。
-特：    特别注意，这是特殊的使用，有很多的不好处，使用要谨慎。
+特：    特别注意，首先浮动的盒子需要和标准流的父级搭配使用， 其次 特别的注意浮动可以使元素显示模式体现为行内块特性。
+
+# 版心和布局流程
+
+阅读报纸时容易发现，虽然报纸中的内容很多，但是经过合理地排版，版面依然清晰、易读。同样，在制作网页时，要想使页面结构清晰、有条理，也需要对网页进行“排版”。
+
+“版心”(可视区) 是指网页中主体内容所在的区域。一般在浏览器窗口中水平居中显示，常见的宽度值为960px、980px、1000px、1200px等。
+
+## 布局流程
+
+为了提高网页制作的效率，布局时通常需要遵守一定的布局流程，具体如下：
+
+1、确定页面的版心（可视区）。
+
+2、分析页面中的行模块，以及每个行模块中的列模块。
+
+3、制作HTML结构 。
+
+4、CSS初始化，然后开始运用盒子模型的原理，通过DIV+CSS布局来控制网页的各个模块。
+
+## 一列固定宽度且居中
+
+<img src="media/yl.jpg" width="400" />
+
+最普通的，最为常用的结构
+
+## 两列左窄右宽型
+
+<img src="media/ll.jpg" width="400" />
+
+比如小米    <a href="http://www.mi.com" target="_blank"> 小米官网 </a>
+
+## 通栏平均分布型
+
+<img src="media/tl.jpg" width="600" />
+
+比如锤子    <a href="http://www.smartisan.com/" target="_blank"> 锤子官网 </a>
 
 # 清除浮动
-
-<img src="media/dt.png" />
 
 人生就像乘坐北京地铁一号线：
 
@@ -1655,9 +1875,11 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 ## 为什么要清除浮动
 
-我们前面说过，浮动本质是用来做一些文字混排效果的，但是被我们拿来做布局用，则会有很多的问题出现， 但是，你不能说浮动不好 <img src="media/wq.jpg" height="100" />。 
+我们前面说过，浮动本质是用来做一些文字混排效果的，但是被我们拿来做布局用，则会有很多的问题出现， 但是，你不能说浮动不好 <img src="media/wq.jpg" height="100" />。  
 
 由于浮动元素不再占用原文档流的位置，所以它会对后面的元素排版产生影响，为了解决这些问题，此时就需要在该元素中清除浮动。
+
+准确地说，并不是清除浮动，而是**清除浮动后造成的影响**
 
 如果浮动一开始就是一个美丽的错误，那么请用正确的方法挽救它。
 
@@ -1712,6 +1934,8 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 ### 使用after伪元素清除浮动
 
+**:after 方式为空元素的升级版，好处是不用单独加标签了** 
+
 使用方法：
 
 ```css
@@ -1739,8 +1963,8 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 ```css
 .clearfix:before,.clearfix:after { 
-  content:".";
-  display:table;
+  content:"";
+  display:table;  /* 这句话可以出发BFC BFC可以清除浮动,BFC我们后面讲 */
 }
 .clearfix:after {
  clear:both;
@@ -1756,47 +1980,20 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 代表网站： 小米、腾讯等
 
-<img src="media/mi.png" style="border: 1px dashed #3c3c3c;"/> 
+ 
 
-# 版心和布局流程
 
-阅读报纸时容易发现，虽然报纸中的内容很多，但是经过合理地排版，版面依然清晰、易读。同样，在制作网页时，要想使页面结构清晰、有条理，也需要对网页进行“排版”。
 
-“版心”是指网页中主体内容所在的区域。一般在浏览器窗口中水平居中显示，常见的宽度值为960px、980px、1000px、1200px等。
-
-## 布局流程
-
-为了提高网页制作的效率，布局时通常需要遵守一定的布局流程，具体如下：
-
-1、确定页面的版心（可视区）。
-
-2、分析页面中的行模块，以及每个行模块中的列模块。
-
-3、制作HTML页面，CSS文件。
-
-4、CSS初始化，然后开始运用盒子模型的原理，通过DIV+CSS布局来控制网页的各个模块。
-
-## 一列固定宽度且居中
-
-<img src="media/yl.jpg" width="400" />
-
-最普通的，最为常用的结构
-
-## 两列左窄右宽型
-
-<img src="media/ll.jpg" width="400" />
-
-比如小米    <a href="http://www.mi.com" target="_blank"> 小米官网 </a>
-
-## 通栏平均分布型
-
-<img src="media/tl.jpg" width="600" />
-
-比如锤子    <a href="http://www.smartisan.com/" target="_blank"> 锤子官网 </a>
-
-# Photoshop
+# Photoshop图像处理专家
 
 ![1498465020015](media/1498465020015.png)
+
+PS 工具是我们使用频率比较高的软件之一， 我们学习PS目的不是为了设计海报做电商和UI的，而是要求：
+
+1. 会简单的抠图
+2. 会简单的修改PSD效果图
+3. **熟练的切图**
+4. 能和网站美工美眉有共同话题。。。。。
 
 ## Photoshop基本使用
 
@@ -1807,11 +2004,9 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 工作区：（新建）
 
-1、调整浮动面板
+调整浮动面板
 
-2、选项栏后方，新建工作区，命名。
-
-删除工作区：先选择其他工作区，再操作删除工作区。
+<img src="media/jiemian.png"/>
 
 ## 基本操作
 
@@ -1822,7 +2017,7 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 屏幕显示： 单位  像素      72像素/英寸    RGB颜色模式
 
-印刷行业： 单位  CM/MM   300像素/英寸   CMYK颜色模式
+<img src="media/huabu.png"/>
 
 2、关闭文档     CTRL+W 
 
@@ -1830,14 +2025,18 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 4、存储为  CTRL+SHIFT+S    另存一份文件
 
+<img src="media/baocun.png"/>
+
 5、格式：
 ​      .psd     PS源文件格式   图层、文字、样式等，可再次编辑
 ​      （给自己）
 ​      .jpg     有损压缩格式   （给客户）  品质  最高12
 
 6、文件打开：
-​      1）文件下拉菜单-打开（CTRL+O欧）（双击软件空白处=打开）
-​      2）拖拽文件至选项栏上方，释放鼠标
+​      1）文件下拉菜单-打开（CTRL+O欧）
+
+​      2）双击软件空白处也能打开
+​    
 
 
 
@@ -1845,9 +2044,21 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 1、不同文件之间拖拽图像。
 
-## 图层操作
 
- 图层面板快捷键   F7
+
+## 自由变形
+
+ctrl + T 可以改变图像的大小
+
+<img src="media/bianhuan.png" />
+
+按下enter 回车确认操作。
+
+## 图层操作(重点)
+
+ 图层面板快捷键   F7  其实图层就是一张张透明的纸  可以实现叠加问题。
+
+<img src="media/tuceng.png" />
 
  图层选择： 使用移动工具V 
 
@@ -1863,13 +2074,15 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 2、按CTRL，单击另一目标图层     只选中目标图层
 
-   复制图层：选中目标图层后（移动工具状态下）
+复制图层：选中目标图层后（移动工具状态下）
 
    1、按ALT拖拽图像
 
    2、CTRL+J      （重合）
 
-   3、拖拽目标至创建新图层按钮
+案例： 摆放一个自行车
+
+<img src="media/bike.jpg" />
 
 ## 图层编组
 
@@ -1899,6 +2112,18 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 移动过程中，没释放鼠标，按住SHIFT，可同一水平线、同一垂线、45度移动。
 
+ps中的撤销操作是：
+
+ctrl+z  撤销一步
+
+ctrl+alt+z  撤销多步
+
+## 图层合并
+
+ctrl+e 可以合并图层
+
+<img src="media/hebing.png" />
+
 ## 图层透明度
 
 不透明度：设置图层的不透明程度    0%完全透明，不可见
@@ -1911,6 +2136,28 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 键盘数字键，可快速设置透明度数值     
 
+## 矩形选区工具 M
+
+用来选择某部分区域  我们成为选区工具 
+
+<img src="media/gongjuxiang.png" />
+
+
+
+取消选区：  ctrl+d 
+
+
+
+## 颜色填充
+
+<img src="media/yanse1.png" />
+
+<img src="media/yanse2.png" />
+
+
+
+<img src="media/miqi.jpg"/>
+
 ## 套索工具 L
 
 1、套索工具      L  在屏幕上拖拽鼠标左键，释放后生成选区
@@ -1921,11 +2168,13 @@ html语言当中另外一个相当重要的概念----------标准流！或者普
 
 ​                  DELETE删除当前点
 
-3、磁性套索工具  L  单击颜色交界后，沿交界线拖拽鼠标，可生成选区。
+<img src="media/shiboguan.jpg" />
 
 ## 磁性套索 L  
 
-L   在颜色交界的位置单击后拖动。单击起始点后，生成选区。      大小写键：CAPSLOCK   可控制光标精确状态。
+L   在颜色交界的位置单击后拖动。单击起始点后，生成选区。      
+
+<img src="media/cixing.jpg" />
 
 ## 魔棒工具   W
 
@@ -1943,6 +2192,8 @@ L   在颜色交界的位置单击后拖动。单击起始点后，生成选区�
 
 选区反选：CTRL+SHIFT+I 
 
+
+
 ## 选区布尔运算
 
 ![1498465944087](media/1498465944087.png)
@@ -1957,6 +2208,10 @@ L   在颜色交界的位置单击后拖动。单击起始点后，生成选区�
 
 与选区交叉：重合部分保留。（按住ALT+SHIFT再绘制选区）
 
+梦幻星球
+
+<img src="media/chengshi.jpg" />
+
 ## 钢笔工具：   P
 
 作用：绘制路径，生成选区，抠图。
@@ -1970,6 +2225,16 @@ L   在颜色交界的位置单击后拖动。单击起始点后，生成选区�
 直线型路径：连续单击
 
 曲线型路径：第一点单击，第二点拖动鼠标。
+
+<img src="media/jiu.png"/>
+
+
+
+
+
+## 文字工具
+
+T  可以直接输入文字
 
 ##  Photoshop 切图
 
@@ -1989,17 +2254,46 @@ PS切图 可以 分为 手动 利用切片切图 以及 利用PS的插件快速�
 
 1. 利用切片工具手动划出
 
-   2.图层---新建基于图层的切片
+2. 图层菜单---新建基于图层的切片
 
-2. 利用标尺   基础参考线的切片
+3. 利用标尺   基于参考线的切片 （选择切片工具）
+
+   ​
 
    ![1498466734205](media/1498466734205.png)
+
+4. 先选个一个整个的切片，  切片选择工具-- 属性面板中有 “划分”   --可以等分数平分切图
+
+
+导出切片： 文件-- 存储为web设备所用格式
+
+### 辅助线和切片使用及清除
+
+视图菜单-- 清除 辅助线/ 清除切片
 
 ### 切图插件
 
 Cutterman是一款运行在photoshop中的插件，能够自动将你需要的图层进行输出， 以替代传统的手工 "导出web所用格式" 以及使用切片工具进行挨个切图的繁琐流程。 它支持各种各样的图片尺寸、格式、形态输出，方便你在pc、ios、Android等端上使用。 它不需要你记住一堆的语法、规则，纯点击操作，方便、快捷，易于上手。
 
+官网: http://www.cutterman.cn/zh/cutterman
+
+注意： cutterman插件要求你的ps 必须是完整版，不能是绿色版，所以大家需要从新安装完整版本。
+
 <img src="media/sample1.gif" />
+
+# 项目案例： 学成网
+
+案例练习目的是总结以前的css和html
+
+还有ps的使用。
+
+制作步骤：
+
+1. 准备相关文件。（内部样式表) html文件(index.html)   图片文件
+2. 准备CSS 初始化。 书写结构和样式
+3. 确定版心（是1200像素)和各个模块。
+
+   
 
 # 定位(position)
 
@@ -2335,6 +2629,26 @@ vertical-align 不影响块级元素中的内容对齐，它只针对于 行内�
 
 1. 给img 添加 display：block; 转换为块级元素就不会存在问题了。<img src="media/sina1.png" width="500" style="border: 1px dashed #ccc;"/>
 
+# 溢出的文字隐藏
+
+## word-break:自动换行
+
+normal   使用浏览器默认的换行规则。
+
+break-all   允许在单词内换行。
+
+keep-all    只能在半角空格或连字符处换行。
+
+## text-overflow 文字溢出
+
+text-overflow : clip | ellipsis
+
+设置或检索是否使用一个省略标记（...）标示对象内文本的溢出
+
+clip : 　不显示省略标记（...），而是简单的裁切 
+
+ellipsis : 　当对象内文本溢出时显示省略标记（...）
+
 ## CSS精灵技术（sprite）
 
 ### 精灵技术产生的背景
@@ -2507,6 +2821,8 @@ http://www.iconfont.cn/
 3. 之所以a包含span就是因为 整个导航都是可以点击的。
 
 
+
+
 ## 伸缩布局(CSS3)
 
 CSS3在布局方面做了非常大的改进，使得我们对块级元素的布局排列变得十分灵活，适应性非常强，其强大的伸缩性，在响应式开中可以发挥极大的作用。
@@ -2544,6 +2860,10 @@ g、flex子项目在主轴的缩放比例，不指定flex属性，则不参与�
 h、order控制子项目的排列顺序，正序方式排序，从小到大
 
 此知识点重在理解，要明确找出主轴、侧轴、方向，各属性对应的属性值
+
+# before和after伪元素
+
+
 
 ## 过渡(CSS3)
 
