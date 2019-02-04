@@ -1,0 +1,125 @@
+div {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    transition: all 3s ease 0.5s;
+}
+
+
+/* 过渡 */
+
+#transitionDemo {
+    border: 0px solid yellow;
+}
+
+#transitionDemo:hover {
+    padding: 50px;
+    border: 30px solid orchid;
+    width: 200px;
+    height: 200px;
+    background-color: olivedrab;
+}
+
+
+/* 移动 */
+
+#translateDemo {
+    transition: all 1s ease;
+}
+
+#translateDemo:hover {
+    transform: translate(400px, 300px);
+    background-color: blue;
+}
+
+
+/* 缩放 */
+
+#scaleDemo {
+    transition: all 1s ease;
+}
+
+#scaleDemo:hover {
+    transform: scale(1.5, 1.5);
+    background-color: blue;
+    transform-origin: right top;
+}
+
+
+/* 旋转 */
+
+#rotateDemo {
+    transition: all 1s ease;
+}
+
+#rotateDemo:hover {
+    transform: rotate(-90deg);
+    transform-origin: right top;
+    background-color: blue;
+}
+
+
+/* 倾斜 */
+
+#skewDemo {
+    transition: all 1s ease;
+}
+
+#skewDemo:hover {
+    transform: skew(10deg, 0deg);
+    transform-origin: right top;
+    background-color: blue;
+}
+
+
+/* 3D旋转 */
+
+body {
+    perspective: 1000px;
+}
+
+#rotate3DDemo {
+    transition: all 1s ease;
+    transform-origin: left;
+}
+
+#rotate3DDemo:hover {
+    /* transform: rotatex(70deg) rotatey(110deg) rotateZ(360deg); */
+    transform: rotate3d(0, 1, 0, 90deg);
+    background-color: blue;
+}
+
+
+/* 3D移动 */
+
+#translate3DDemo {
+    transition: all 1s ease;
+}
+
+#translate3DDemo:hover {
+    transform: translate3d(90px, -30px, -300px);
+}
+
+
+/* 动画 */
+
+#animationDemo {
+    transition: all 1s;
+    animation: go 4s infinite alternate;
+}
+
+@keyframes go {
+    0% {}
+    25% {
+        transform: translate3d(500px, 0, 0);
+    }
+    50% {
+        transform: translate3d(500px, -1000px, -300px);
+    }
+    75% {
+        transform: translate3d(0, -1000px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}

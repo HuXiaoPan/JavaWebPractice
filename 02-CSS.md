@@ -2581,7 +2581,7 @@ cursor :  default  小白 | pointer  小手  | move  移动  |  text  文本
 
  但是我们都不关心可以设置多少，我们平时都是去掉的。
 
-最直接的写法是 ：  outline: 0; 
+最直接的写法是 ：  outline: 0;   或者  outline: none;
 
 ```html
  <input  type="text"  style="outline: 0;"/>
@@ -2611,7 +2611,7 @@ resize：none    这个单词可以防止 火狐 谷歌等浏览器随意的拖�
 
 vertical-align 垂直对齐， 这个看上去很美好的一个属性， 实际有着不可捉摸的脾气，否则我们也不会这么晚来讲解。
 
-<img src="media/1.jpg" />
+<img src="media/xian.jpg" />
 
 ~~~css
 vertical-align : baseline |top |middle |bottom 
@@ -2619,17 +2619,19 @@ vertical-align : baseline |top |middle |bottom
 
 设置或检索对象内容的垂直对其方式。 
 
+vertical-align 不影响块级元素中的内容对齐，它只针对于 行内元素或者行内块元素，特别是行内块元素， **通常用来控制图片/表单与文字的对齐**。
+
 ![1498467742995](media/1498467742995.png)
 
-vertical-align 不影响块级元素中的内容对齐，它只针对于 行内元素或者行内块元素，特别是行内块元素， 通常用来控制图片和表单等。
 
-### 图片和文字对齐
+
+### 图片、表单和文字对齐
 
 所以我们知道，我们可以通过vertical-align 控制图片和文字的垂直关系了。 默认的图片会和文字基线对齐。
 
 ### 去除图片底侧空白缝隙
 
-有个很重要特性你要记住： 如果一个元素没有基线，比如图片或者表单等行内块元素，则他的底线会和父级盒子的基线对齐。</strong> 这样会造成一个问题，就是图片底侧会有一个空白缝隙。
+有个很重要特性你要记住： 图片或者表单等行内块元素，他的底线会和父级盒子的基线对齐。这样会造成一个问题，就是图片底侧会有一个空白缝隙。
 
 <img src="media/3.jpg" />
 
@@ -2650,6 +2652,17 @@ break-all   允许在单词内换行。
 
 keep-all    只能在半角空格或连字符处换行。
 
+主要处理英文单词
+
+## white-space
+
+white-space设置或检索对象内文本显示方式。通常我们使用于强制一行显示内容 
+
+normal : 　默认处理方式
+nowrap : 　强制在同一行内显示所有文本，直到文本结束或者遭遇br标签对象才换行。
+
+可以处理中文
+
 ## text-overflow 文字溢出
 
 text-overflow : clip | ellipsis
@@ -2660,11 +2673,13 @@ clip : 　不显示省略标记（...），而是简单的裁切
 
 ellipsis : 　当对象内文本溢出时显示省略标记（...）
 
-## CSS精灵技术（sprite）
+注意一定要首先强制一行内显示，再次和overflow属性  搭配使用
+
+## CSS精灵技术（sprite） 小妖精  雪碧
 
 ### 精灵技术产生的背景
 
-<img src="media/s.png" />
+<img src="media/sss.png" />
 
 图所示为网页的请求原理图，当用户访问一个网站时，需要向服务器发送请求，网页上的每张图像都要经过一次请求才能展现给用户。
 
@@ -2672,9 +2687,9 @@ ellipsis : 　当对象内文本溢出时显示省略标记（...）
 
 ### 精灵技术本质
 
-简单地说，CSS精灵是一种处理网页背景图像的方式。它将一个页面涉及到的所有零星背景图像都集中到一张大图中去，然后将大图应用于网页，这样，当用户访问该页面时，只需向服务发送一次请求，网页中的背景图像即可全部展示出来。通常情况下，这个由很多小的背景图像合成的大图被称为精灵图，如下图所示为京东网站中的一个精灵图。
+简单地说，CSS精灵是一种处理网页背景图像的方式。它将一个页面涉及到的所有零星背景图像都集中到一张大图中去，然后将大图应用于网页，这样，当用户访问该页面时，只需向服务发送一次请求，网页中的背景图像即可全部展示出来。通常情况下，这个由很多小的背景图像合成的大图被称为精灵图（雪碧图），如下图所示为京东网站中的一个精灵图。
 
-<img src="media/jd.png"  style="border: 1px dashed #ccc;" />
+<img src="media/jds.png"  style="border: 1px dashed #ccc;" />
 
 ### 精灵技术的使用
 
@@ -2773,29 +2788,60 @@ http://www.iconfont.cn/
 
 当然，我们不需要自己专门的图标，是想网上找几个图标使用，以上2步可以直接省略了， 直接到刚才的网站上找喜欢的下载使用吧。
 
+
+
 <img src="media/fontt1.png" />
 
 <img src="media/fontt2.png" />
 
 #### 字体引入到HTML
 
-最后一步，是最重要的一步了， 就是字体文件已经有了，我们需要引入到我们页面中。
+得到压缩包之后，最后一步，是最重要的一步了， 就是字体文件已经有了，我们需要引入到我们页面中。
 
 1. 首先把 以下4个文件放入到 fonts文件夹里面。 通俗的做法
 
    ![1498032122244](media/1498032122244.png)
 
-   ### 第一步：引入项目下面生成的fontclass代码：
+   ##### 第一步：在样式里面声明字体： 告诉别人我们自己定义的字体
 
-   ```html
-   <link rel="stylesheet" type="text/CSS" href="./iconfont.CSS">
+   ```css
+   @font-face {
+     font-family: 'icomoon';
+     src:  url('fonts/icomoon.eot?7kkyc2');
+     src:  url('fonts/icomoon.eot?7kkyc2#iefix') format('embedded-opentype'),
+       url('fonts/icomoon.ttf?7kkyc2') format('truetype'),
+       url('fonts/icomoon.woff?7kkyc2') format('woff'),
+       url('fonts/icomoon.svg?7kkyc2#icomoon') format('svg');
+     font-weight: normal;
+     font-style: normal;
+   }
    ```
 
-   ### 第二步：挑选相应图标并获取类名，应用于页面：
+   ##### 第二步：给盒子使用字体
 
-   ```html
-   <i class="iconfont icon-xxx"></i>
+   ```css
+   span {
+   		font-family: "icomoon";
+   	}
    ```
+
+   ##### 第三步：盒子里面添加结构
+
+   ~~~css
+   span::before {
+   		 content: "\e900";
+   	}
+   或者  
+   <span></span>  
+   ~~~
+
+   ###  追加新图标到原来库里面
+
+   如果工作中，原来的字体图标不够用了，我们需要添加新的字体图标，但是原来的不能删除，继续使用，此时我们需要这样做
+
+   把压缩包里面的selection.json 从新上传，然后，选中自己想要新的图标，从新下载压缩包，替换原来文件即可。
+
+   <img src="media/fontt5.png" />
 
 ## 滑动门
 
@@ -2832,47 +2878,19 @@ http://www.iconfont.cn/
 3. 之所以a包含span就是因为 整个导航都是可以点击的。
 
 
+## before和after伪元素(详解)
 
-
-## 伸缩布局(CSS3)
-
-CSS3在布局方面做了非常大的改进，使得我们对块级元素的布局排列变得十分灵活，适应性非常强，其强大的伸缩性，在响应式开中可以发挥极大的作用。
-
-主轴：Flex容器的主轴主要用来配置Flex项目，默认是水平方向
-
-侧轴：与主轴垂直的轴称作侧轴，默认是垂直方向的
-
-方向：默认主轴从左向右，侧轴默认从上到下
-
-主轴和侧轴并不是固定不变的，通过flex-direction可以互换。
-
-![1498441839910](media/1498441839910.png)
+之所以被称为伪元素，是因为他们不是真正的页面元素，html没有对应的元素，但是其所有用法和表现行为与真正的页面元素一样，可以对其使用诸如页面元素一样的css样式，表面上看上去貌似是页面的某些元素来展现，实际上是css样式展现的行为，因此被称为伪元素。是伪元素在html代码机构中的展现，可以看出无法伪元素的结构无法审查
 
 
 
-Flex布局的语法规范经过几年发生了很大的变化，也给Flexbox的使用带来一定的局限性，因为语法规范版本众多，浏览器支持不一致，致使Flexbox布局使用不多
+**注意**
 
-**2、各属性详解******
+伪元素:before和:after添加的内容默认是inline元素**；这个两个伪元素的`content`属性，表示伪元素的内容,设置:before和:after时必须设置其`content`属性，否则伪元素就不起作用。
 
-a、flex-direction调整主轴方向（默认为水平方向）
 
-b、justify-content调整主轴对齐
 
-c、align-items调整侧轴对齐
 
-d、flex-wrap控制是否换行
-
-e、align-content堆栈（由flex-wrap产生的独立行）对齐
-
-f、flex-flow是flex-direction、flex-wrap的简写形式
-
-g、flex子项目在主轴的缩放比例，不指定flex属性，则不参与伸缩分配
-
-h、order控制子项目的排列顺序，正序方式排序，从小到大
-
-此知识点重在理解，要明确找出主轴、侧轴、方向，各属性对应的属性值
-
-# before和after伪元素
 
 
 
@@ -2894,6 +2912,7 @@ h、order控制子项目的排列顺序，正序方式排序，从小到大
 
 ~~~
 transition: 要过渡的属性  花费时间  运动曲线  何时开始;
+如果有多组属性变化，还是用逗号隔开。
 ~~~
 
 | 属性                         | 描述                      | CSS  |
@@ -2904,27 +2923,47 @@ transition: 要过渡的属性  花费时间  运动曲线  何时开始;
 | transition-timing-function | 规定过渡效果的时间曲线。默认是 "ease"。 | 3    |
 | transition-delay           | 规定过渡效果何时开始。默认是 0。       | 3    |
 
+如果想要所有的属性都变化过渡， 写一个all 就可以
+
+transition-duration  花费时间  单位是  秒     s    比如 0.5s    这个s单位必须写      ms 毫秒
+
+运动曲线   默认是 ease
+
+ 何时开始  默认是 0s  立马开始
+
 运动曲线示意图：
 
 ![1498445454760](media/1498445454760.png)
 
 ~~~css
-img {
-  width:80px; height: 80px; border:8px solid #ccc; border-radius: 50%;
-  transition:transform 0.5s ease-in 0s;
+div {
+			width: 200px;
+			height: 100px;
+			background-color: pink;
+			/* transition: 要过渡的属性  花费时间  运动曲线  何时开始; */
+			transition: width 0.6s ease 0s, height 0.3s ease-in 1s;
+			/* transtion 过渡的意思  这句话写到div里面而不是 hover里面 */
+  
+			
 }
-img:hover {
-  transform:rotate(180deg);
+div:hover {  /* 鼠标经过盒子，我们的宽度变为400 */
+
+			width: 600px;
+			height: 300px
 }
+
+transition: all 0.6s;  /* 所有属性都变化用all 就可以了  后面俩个属性可以省略 */
 ~~~
 
-## 2D变形(CSS3)
+## 2D变形(CSS3) transform
 
-转换是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式，配合过渡和即将学习的动画知识，可以取代大量之前只能靠Flash才可以实现的效果。
+transform是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、倾斜、缩放，甚至支持矩阵方式，配合过渡和即将学习的动画知识，可以取代大量之前只能靠Flash才可以实现的效果。
 
-变形转换 transform  
+变形转换 transform    transform  变换 变形的意思             《 transformers 变形金刚》
 
-- 移动 translate(x, y) 
+###  移动 translate(x, y)    
+
+translate 移动平移的意思
 
 ![1498443715586](media/1498443715586.png)
 
@@ -2956,7 +2995,7 @@ translate(50px,50px);
 
  让定位的盒子水平居中
 
-- 缩放 scale(x, y) 
+### 缩放 scale(x, y) 
 
 ![1498444645795](media/1498444645795.png)
 
@@ -2974,7 +3013,7 @@ scaleY(y)元素仅垂直方向缩放（Y轴缩放）
 
  scale()的取值默认的值为1，当值设置为0.01到0.99之间的任何值，作用使一个元素缩小；而任何大于或等于1.01的值，作用是让元素放大
 
-- 旋转 rotate(deg) 
+### 旋转 rotate(deg) 
 
 可以对元素进行旋转，正值为顺时针，负值为逆时针；
 
@@ -2984,53 +3023,66 @@ scaleY(y)元素仅垂直方向缩放（Y轴缩放）
 transform:rotate(45deg);
 ~~~
 
-1. 当元素旋转以后，坐标轴也跟着发生的转变
-2. 调整顺序可以解决，把旋转放到最后
-3. 注意单位是 deg 度数
+ 注意单位是 deg 度数  	
 
-案例旋转扑克牌
+### transform-origin可以调整元素转换变形的原点
+
+![1498443912530](media/1498443912530.png)
+
+```css
+ div{transform-origin: left top;transform: rotate(45deg); }  /* 改变元素原点到左上角，然后进行顺时旋转45度 */    
+```
+
+ 如果是4个角，可以用 left top这些，如果想要精确的位置， 可以用  px 像素。
 
 ~~~css
-body {
-  background-color: skyblue;
-}
-.container {
-  width: 100px;
-  height: 150px;
-  border: 1px solid gray;
-  margin: 300px auto;
-  position: relative;
-}
-.container > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-origin: top right;
-  /* 添加过渡 */
-  transition: all 1s;
-}
-.container:hover img:nth-child(1) {
-  transform: rotate(60deg);
-}
-.container:hover img:nth-child(2) {
-  transform: rotate(120deg);
-}
-.container:hover img:nth-child(3) {
-  transform: rotate(180deg);
-}
-.container:hover img:nth-child(4) {
-  transform: rotate(240deg);
-}
-.container:hover img:nth-child(5) {
-  transform: rotate(300deg);
-}
-.container:hover img:nth-child(6) {
-  transform: rotate(360deg);
-}
+ div{transform-origin: 10px 10px;transform: rotate(45deg); }  /* 改变元素原点到x 为10  y 为10，然后进行顺时旋转45度 */ 
 ~~~
 
-- 倾斜 skew(deg, deg) 
+
+
+案例旋转楚乔传
+
+~~~css
+div {
+			width: 250px;
+			height: 170px;
+			border: 1px solid pink;
+			margin: 200px auto;
+			position: relative;
+
+		}
+		div img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: all 0.6s;
+			transform-origin: top right;
+		
+		}
+		div:hover img:nth-child(1) {  /* 鼠标经过div  第一张图片旋转 */
+			transform: rotate(60deg);
+		}
+		div:hover img:nth-child(2) {  
+			transform: rotate(120deg);
+		}
+		div:hover img:nth-child(3) {  
+			transform: rotate(180deg);
+		}
+		div:hover img:nth-child(4) {  
+			transform: rotate(240deg);
+		}
+		div:hover img:nth-child(5) {  
+			transform: rotate(300deg);
+		}
+		div:hover img:nth-child(6) {  
+			transform: rotate(360deg);
+		}
+~~~
+
+### 倾斜 skew(deg, deg) 
 
 ![1498443827389](media/1498443827389.png)
 
@@ -3042,19 +3094,15 @@ transform:skew(30deg,0deg);
 
 可以使元素按一定的角度进行倾斜，可为负值，第二个参数不写默认为0。
 
-5.transform-origin可以调整元素转换的原点
 
-![1498443912530](media/1498443912530.png)
 
-```css
- div{transform-origin: left top;transform: rotate(45deg); }  /* 改变元素原点到左上角，然后进行顺时旋转45度 */    
-```
+## 3D变形(CSS3) transform
 
-案例：  菱形照片        三角盒子  
+2d    x  y  
 
-## 3D变形
+3d  x  y  z
 
-左手坐标系
+ 左手坐标系
 
 伸出左手，让拇指和食指成“L”形，大拇指向右，食指向上，中指指向前方。这样我们就建立了一个左手坐标系，拇指、食指和中指分别代表X、Y、Z轴的正方向。如下图
 
@@ -3065,6 +3113,14 @@ transform:skew(30deg,0deg);
 CSS3中的3D坐标系与上述的3D坐标系是有一定区别的，相当于其绕着X轴旋转了180度，如下图
 
 ![1498459001951](media/1498459001951.png)
+
+简单记住他们的坐标：
+
+ x左边是负的，右边是正的
+
+y 上面是负的， 下面是正的
+
+z 里面是负的， 外面是正的
 
 ###  rotateX() 
 
@@ -3120,16 +3176,39 @@ img:hover {
 
 透视可以将一个2D平面，在转换的过程当中，呈现3D效果。
 
+- 透视原理： 近大远小 。
+- 浏览器透视：把近大远小的所有图像，透视在屏幕上。
+- perspective：视距，表示视点距离屏幕的长短。视点，用于模拟透视效果时人眼的位置
+
 注：并非任何情况下需要透视效果，根据开发需要进行设置。
 
-perspective有两种写法
-
-1. 作为一个属性，设置给父元素，作用于所有3D转换的子元素
-2. 作为transform属性的一个值，做用于元素自身
+perspective 一般作为一个属性，设置给父元素，作用于所有3D转换的子元素
 
 理解透视距离原理：
 
 ![1498446715314](media/1498446715314.png)
+
+### translateX(x)
+
+仅水平方向移动**（X轴移动）
+
+![1498459697576](media/1498459697576.png)
+
+主要目的实现移动效果
+
+### translateY(y)
+
+仅垂直方向移动（Y轴移动）
+
+![1498459770252](media/1498459770252.png)
+
+### translateZ(z)
+
+transformZ的直观表现形式就是大小变化，实质是XY平面相对于视点的远近变化（说远近就一定会说到离什么参照物远或近，在这里参照物就是perspective属性）。比如设置了perspective为200px;那么transformZ的值越接近200，就是离的越近，看上去也就越大，超过200就看不到了，因为相当于跑到后脑勺去了，我相信你正常情况下，是看不到自己的后脑勺的。
+
+### translate3d(x,y,z)
+
+[注意]其中，x和y可以是长度值，也可以是百分比，百分比是相对于其本身元素水平方向的宽度和垂直方向的高度和；z只能设置长度值
 
 ###  开门案例
 
@@ -3142,7 +3221,7 @@ body {
   margin: 100px auto;
   border: 1px solid gray;
   perspective: 1000px;
-  background: url('images/dog.gif') no-repeat center/cover;
+  background: url('images/dog.gif') no-repeat cover;
   position: relative;
 }
 .door > div {
@@ -3197,85 +3276,41 @@ body {
 }
 ~~~
 
-### translateX(x)
 
-仅水平方向移动**（X轴移动）
 
-![1498459697576](media/1498459697576.png)
+###  backface-visibility 
 
-主要目的实现移动效果
+backface-visibility 属性定义当元素不面向屏幕时是否可见。
 
-### translateY(y)
 
-仅垂直方向移动（Y轴移动）
 
-![1498459770252](media/1498459770252.png)
-
-### translateZ(z)
-
-transformZ的直观表现形式就是大小变化，实质是XY平面相对于视点的远近变化（说远近就一定会说到离什么参照物远或近，在这里参照物就是perspective属性）。比如设置了perspective为200px;那么transformZ的值越接近200，就是离的越近，看上去也就越大，超过200就看不到了，因为相当于跑到后脑勺去了，我相信你正常情况下，是看不到自己的后脑勺的。
-
-###  3D呈现（transform-style）
-
-设置内嵌的元素在 3D 空间如何呈现，这些子元素必须为转换原素。
-
-flat：所有子元素在 2D 平面呈现
-
-preserve-3d：保留3D空间
-
-3D元素构建是指某个图形是由多个元素构成的，可以给这些元素的父元素设置transform-style: preserve-3d来使其变成一个真正的3D图形。
-
-一般而言，该声明应用在3D变换的兄弟元素们的父元素上。
-
-### 翻转盒子案例(百度钱包)
+### 翻转盒子案例
 
 ~~~css
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #B3C04C;
-
-}
-
-.wallet {
-  width: 300px;
-  height: 300px;
-  margin: 50px auto;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.5s;
-}
-
-.wallet::before, .wallet::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url(./images/bg.png);
-  background-repeat: no-repeat;
-}
-
-.wallet::before {
-  background-position: right top;
-  transform: rotateY(180deg);
-}
-
-.wallet::after {
-  background-position: left top;
-  transform: translateZ(2px);
-}
-
-.wallet:hover {
-  transform: rotateY(180deg);
+div {
+			width: 224px;
+			height: 224px;
+			margin: 100px auto;
+			position: relative;
+		}
+		div img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: all 1s; 
+		}
+		div img:first-child {
+			z-index: 1;
+			backface-visibility: hidden; /* 不是正面对象屏幕，就隐藏 */
+		}
+		div:hover img {
+			transform: rotateY(180deg);
 }
 ~~~
 
 
 
-## 动画(CSS3)
+## 动画(CSS3) animation
 
 动画是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。
 
@@ -3332,3 +3367,134 @@ img {
   }
 }
 ~~~
+
+## 伸缩布局(CSS3)
+
+CSS3在布局方面做了非常大的改进，使得我们对块级元素的布局排列变得十分灵活，适应性非常强，其强大的伸缩性，在响应式开中可以发挥极大的作用。
+
+主轴：Flex容器的主轴主要用来配置Flex项目，默认是水平方向
+
+侧轴：与主轴垂直的轴称作侧轴，默认是垂直方向的
+
+方向：默认主轴从左向右，侧轴默认从上到下
+
+主轴和侧轴并不是固定不变的，通过flex-direction可以互换。
+
+![1498441839910](media/1498441839910.png)
+
+
+
+Flex布局的语法规范经过几年发生了很大的变化，也给Flexbox的使用带来一定的局限性，因为语法规范版本众多，浏览器支持不一致，致使Flexbox布局使用不多
+
+**2、各属性详解******
+
+1.flex子项目在主轴的缩放比例，不指定flex属性，则不参与伸缩分配
+
+min-width  最小值      min-width: 280px  最小宽度  不能小于 280
+
+max-width: 1280px  最大宽度  不能大于 1280
+
+2.flex-direction调整主轴方向（默认为水平方向）
+
+flex-direction: column 垂直排列
+
+flex-direction: row  水平排列
+
+http://m.ctrip.com/html5/   携程网手机端地址
+
+3、justify-content调整主轴对齐（水平对齐）
+
+子盒子如何在父盒子里面水平对齐
+
+| 值             | 描述                       | 白话文                     |
+| ------------- | ------------------------ | ----------------------- |
+| flex-start    | 默认值。项目位于容器的开头。           | 让子元素从父容器的开头开始排序但是盒子顺序不变 |
+| flex-end      | 项目位于容器的结尾。               | 让子元素从父容器的后面开始排序但是盒子顺序不变 |
+| center        | 项目位于容器的中心。               | 让子元素在父容器中间显示            |
+| space-between | 项目位于各行之间留有空白的容器内。        | 左右的盒子贴近父盒子，中间的平均分布空白间距  |
+| space-around  | 项目位于各行之前、之间、之后都留有空白的容器内。 | 相当于给每个盒子添加了左右margin外边距  |
+
+4、align-items调整侧轴对齐（垂直对齐）
+
+子盒子如何在父盒子里面垂直对齐（单行）
+
+| 值          | 描述              | 白话文                         |
+| ---------- | --------------- | --------------------------- |
+| stretch    | 默认值。项目被拉伸以适应容器。 | 让子元素的高度拉伸适用父容器（子元素不给高度的前提下) |
+| center     | 项目位于容器的中心。      | 垂直居中                        |
+| flex-start | 项目位于容器的开头。      | 垂直对齐开始位置 上对齐                |
+| flex-end   | 项目位于容器的结尾。      | 垂直对齐结束位置 底对齐                |
+|            |                 |                             |
+
+5、flex-wrap控制是否换行
+
+当我们子盒子内容宽度多于父盒子的时候如何处理
+
+| 值            | 描述                                       |
+| ------------ | ---------------------------------------- |
+| nowrap       | 默认值。规定灵活的项目不拆行或不拆列。  不换行，则 收缩（压缩） 显示  强制一行内显示 |
+| wrap         | 规定灵活的项目在必要的时候拆行或拆列。                      |
+| wrap-reverse | 规定灵活的项目在必要的时候拆行或拆列，但是以相反的顺序。             |
+|              |                                          |
+|              |                                          |
+
+6、flex-flow是flex-direction、flex-wrap的简写形式
+
+~~~css
+flex-flow: flex-direction  flex-wrap;  
+~~~
+
+
+
+白话记：    flex-flow: 排列方向   换不换行; 
+
+两个中间用空格
+
+例如：
+
+~~~css
+display: flex;
+/* flex-direction: row;
+flex-wrap: wrap;   这两句话等价于下面的这句话*/
+flex-flow: column wrap;  /* 两者的综合 */
+~~~
+
+
+
+7、align-content堆栈（由flex-wrap产生的独立行）多行垂直对齐方式齐
+
+align-content是针对flex容器里面多轴(多行)的情况,align-items是针对一行的情况进行排列。
+
+必须对父元素设置自由盒属性display:flex;，并且设置排列方式为横向排列flex-direction:row;并且设置换行，flex-wrap:wrap;这样这个属性的设置才会起作用。
+
+| 值             | 描述                       | 测试   |
+| ------------- | ------------------------ | ---- |
+| stretch       | 默认值。项目被拉伸以适应容器。          |      |
+| center        | 项目位于容器的中心。               |      |
+| flex-start    | 项目位于容器的开头。               |      |
+| flex-end      | 项目位于容器的结尾。               |      |
+| space-between | 项目位于各行之间留有空白的容器内。        |      |
+| space-around  | 项目位于各行之前、之间、之后都留有空白的容器内。 |      |
+
+8、order控制子项目的排列顺序，正序方式排序，从小到大
+
+用css 来控制盒子的前后顺序。  用order 就可以
+
+用整数值来定义排列顺序，数值小的排在前面。可以为负值。 默认值是 0
+
+~~~css
+order: 1;
+~~~
+
+
+
+
+
+此知识点重在理解，要明确找出主轴、侧轴、方向，各属性对应的属性值
+
+
+
+
+
+
+
