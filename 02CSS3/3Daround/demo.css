@@ -1,0 +1,59 @@
+body {
+    perspective: 1000px;
+}
+
+.mid,
+.mid>div {
+    height: 400px;
+    width: 200px;
+    background: url(demo.jpg) no-repeat center center / cover;
+}
+
+.mid {
+    margin: 100px auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 5s linear;
+    animation: run 8s linear infinite;
+}
+
+@keyframes run {
+    from {}
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.mid:hover {
+    animation-play-state: paused;
+}
+
+.mid>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mid>div:first-child {
+    transform: rotateY(0deg) translateZ(300px);
+}
+
+.mid>div:nth-child(2) {
+    transform: rotateY(60deg) translateZ(300px);
+}
+
+.mid>div:nth-child(3) {
+    transform: rotateY(120deg) translateZ(300px);
+}
+
+.mid>div:nth-child(4) {
+    transform: rotateY(180deg) translateZ(300px);
+}
+
+.mid>div:nth-child(5) {
+    transform: rotateY(240deg) translateZ(300px);
+}
+
+.mid>div:last-child {
+    transform: rotateY(300deg) translateZ(300px);
+}
