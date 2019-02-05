@@ -510,7 +510,7 @@ console.log(name, age);
 	!  非  取反
 
 ### 关系运算符(比较运算符)
-	<  >  >=  <= == != === !==
+	<  >  >=  <=  == != === !==
 ```javascript
 ==与===的区别：==只进行值得比较，===类型和值同时相等，则相等
 
@@ -959,7 +959,7 @@ arr[3] = "pink";
 - 函数声明
 
 ```javascript
-function 函数名(){
+function 函数名() {
   // 函数体
 }
 ```
@@ -967,7 +967,7 @@ function 函数名(){
 - 函数表达式
 
 ```javascript
-var fn = function() {
+var fn = function () {
   // 函数体
 }
 ```
@@ -975,7 +975,7 @@ var fn = function() {
 - 特点：
 
   函数声明的时候，函数体并不会执行，只要当函数被调用的时候才会执行。
-  函数一般都用来干一件事情，需用使用动词+名词，表示做一件事情 `tellStory` `sayHello`等
+  函数一般都用来干一件事情，函数名称一般使用动词
 
 ### 函数的调用
 - 调用函数的语法：
@@ -1032,12 +1032,14 @@ function getSum() {
 ```javascript
 // 函数内部是一个封闭的环境，可以通过参数的方式，把外部的值传递给函数内部
 // 带参数的函数声明
-function 函数名(形参1, 形参2, 形参...){
+function 函数名(形参1, 形参2, 形参3...) {
   // 函数体
 }
 
 // 带参数的函数调用
-函数名(实参1, 实参2, 实参3);
+函数名(实参1, 实参2, 实参3); 
+形参1 = 实参1
+形参2 = 实参2
 ```
 
 - 形参和实参
@@ -1051,17 +1053,17 @@ fn(x,y);
 function fn(a, b) {
   console.log(a + b);
 }
-//x,y实参，有具体的值。函数执行的时候会把x,y复制一份给函数内部的a和b，函数内部的值是复制的新值，无法修改外部的x,y
+// x,y实参，有具体的值。函数执行的时候会把x,y复制一份给函数内部的a和b，函数内部的值是复制的新值，无法修改外部的x,y
 ```
 
 ### 案例
 
 - 求1-n之间所有数的和
-- 求n-m之间所有数额和
+- 求n-m之间所有数的和
 - 圆的面积
 - 求2个数中的最大值
 - 求3个数中的最大值
-- 判断一个数是否是素数
+- 判断一个数是否是素数(又叫质数，只能被1和自身整数的数)
 
 ### 函数的返回值
 
@@ -1071,31 +1073,32 @@ function fn(a, b) {
 
 ```javascript
 //声明一个带返回值的函数
-function 函数名(形参1, 形参2, 形参...){
+function 函数名(形参1, 形参2, 形参3...) {
   //函数体
   return 返回值;
 }
 
 //可以通过变量来接收这个返回值
-var 变量 = 函数名(实参1, 实参2, 实参3);
+var 变量 = 函数名(实参1, 实参2, 实参3...);
 ```
 
 函数的调用结果就是返回值，因此我们可以直接对函数调用结果进行操作。
 
+### 案例
+
+- 求一组数中的最大值
+- 求一组数中的最小值
+- 求阶乘
+- 求1!+2!+3!+....+n!
+
 返回值详解：
+
     如果函数没有显示的使用 return语句 ，那么函数有默认的返回值：undefined
     如果函数使用 return语句，那么跟再return后面的值，就成了函数的返回值
     如果函数使用 return语句，但是return后面没有任何值，那么函数的返回值也是：undefined
     函数使用return语句后，这个函数会在执行完 return 语句之后停止并立即退出，也就是说return后面的所有其他代码都不会再执行。
     
     推荐的做法是要么让函数始终都返回一个值，要么永远都不要返回值。
-
-### 案例
-
-- 求阶乘
-- 求1!+2!+3!+....+n!
-- 求一组数中的最大值
-- 求一组数中的最小值
 
 ### arguments的使用
 
@@ -1128,7 +1131,6 @@ var 变量 = 函数名(实参1, 实参2, 实参3);
 	将匿名函数赋值给一个变量，这样就可以通过变量进行调用
 	匿名函数自调用
 
-关于自执行函数（匿名函数自调用）的作用：防止全局变量污染。
 ### 自调用函数
 >匿名函数不能通过直接调用来执行，因此可以通过匿名函数的自调用的方式来执行
 ```javascript
@@ -1145,11 +1147,11 @@ console.log(typeof fn);
 
 - 函数作为参数
 
-因为函数也是一种类型，可以把函数作为两一个函数的参数，在两一个函数中调用
+因为函数也是一种类型，可以把函数作为两一个函数的参数，在另一个函数中调用
 
 - 函数做为返回值
 
-因为函数是一种类型，所以可以把函数可以作为返回值从函数内部返回，这种用法在后面很常见。
+因为函数是一种类型，所以可以把函数可以作为返回值从函数内部返回。
 
 ```javascript
 function fn(b) {
@@ -1163,17 +1165,27 @@ fn(15)();
 
 ### 代码规范
     1.命名规范	
+    	变量、函数 的命名 必须要有意义
+    	变量 的名称一般用名词
+    	函数 的名称一般用动词
     2.变量规范   
-    	var name = 'zs';	
+    	操作符的前后要有空格
+    	var name = 'zs';	  5 + 6
     3.注释规范
     	// 这里是注释
     4.空格规范
+    	if (true) {
+          
+    	}
+    	for (var i = 0; i <= 100; i++) {
+          
+    	}
     5.换行规范
     	var arr = [1, 2, 3, 4];
     	if (a > b) {
           
     	}
-    	for(var i = 0; i < 10; i++) {
+    	for (var i = 0; i < 10; i++) {
           
     	}
     	function fn() {
@@ -1188,11 +1200,11 @@ fn(15)();
 
 - 全局变量
 
-  ​在任何地方都可以访问到的变量就是全局变量，对应全局作用域
+  在任何地方都可以访问到的变量就是全局变量，对应全局作用域
 
 - 局部变量
 
-  ​只在固定的代码片段内可访问到的变量，最常见的例如函数内部。对应局部作用域(函数作用域)
+  只在固定的代码片段内可访问到的变量，最常见的例如函数内部。对应局部作用域(函数作用域)
 
 ```
 不使用var声明的变量是全局变量，不推荐使用。
@@ -1203,29 +1215,6 @@ fn(15)();
 
 任何一对花括号（｛和｝）中的语句集都属于一个块，在这之中定义的所有变量在代码块外都是不可见的，我们称之为块级作用域。
 **在es5之前没有块级作用域的的概念,只有函数作用域**，现阶段可以认为JavaScript没有块级作用域
-
-### 词法作用域
-变量的作用域是在定义时决定而不是执行时决定，也就是说词法作用域取决于源码，通过静态分析就能确定，因此词法作用域也叫做静态作用域。
-
-**在 js 中词法作用域规则:**
-
-- 函数允许访问函数外的数据.
-- 整个代码结构中只有函数可以限定作用域.
-- 作用域规则首先使用提升规则分析
-- 如果当前作用规则中有名字了, 就不考虑外面的名字
-
-```javascript
-var num = 123;
-function foo() {
-  console.log( num );
-}
-foo();
-
-if ( false ) {
-    var num = 123;
-}
-console.log( num ); // undefiend
-```
 
 ### 作用域链
 	只有函数可以制造作用域结构， 那么只要是代码，就至少有一个作用域, 即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域。
@@ -1252,7 +1241,7 @@ function f3() {
 function f1() {
     var num = 123;
     function f2() {
-        console.log( num );
+        console.log(num); 
     }
     f2();
 }
@@ -1270,20 +1259,23 @@ f1();
 
 1. 把变量的声明提升到当前作用域的最前面，只会提升声明，不会提升赋值。
 2. 把函数的声明提升到当前作用域的最前面，只会提升声明，不会提升调用。
-3. 先提升var，在提升function
+3. 先提升var，在提升function。
 
 
 
 JavaScript的执行过程
 
 ```javascript
+// 案例1
 var a = 25;
-function abc (){
-  alert(a);//undefined
+function abc() {
+  alert(a); 
   var a = 10;
 }
 abc();
-// 如果变量和函数同名的话，函数优先
+
+
+// 案例2
 console.log(a);
 function a() {
   console.log('aaaaa');
@@ -1292,10 +1284,6 @@ var a = 1;
 console.log(a);
 ```
 
-
-
-### 全局解析规则
-### 函数内部解析规则
 ### 变量提升
 
 - 变量提升
@@ -1411,10 +1399,10 @@ var o = {
 
 ```javascript
 var person = new Object();
-  person.name = 'lisi';
-  person.age = 35;
-  person.job = 'actor';
-  person.sayHi = function(){
+person.name = 'lisi';
+person.age = 35;
+person.job = 'actor';
+person.sayHi = function() {
   console.log('Hello,everyBody');
 }
 ```
@@ -1434,7 +1422,7 @@ var p1 = createPerson('张三', 22, 'actor');
 ```
 - 自定义构造函数
 ```javascript
-function Person(name,age,job){
+function Person(name, age, job){
   this.name = name;
   this.age = age;
   this.job = job;
@@ -1500,12 +1488,12 @@ console.log(obj.name); // undefined
 >
 >引用类型：复杂数据类型，在存储是，变量中存储的仅仅是地址（引用），因此叫做引用数据类型。
 
-- 堆和栈
+- 堆和栈	
 
   ```
   堆栈空间分配区别：
-  　　1、栈（操作系统）：由操作系统自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈；
-  　　2、堆（操作系统）： 存储复杂类型(对象)，一般由程序员分配释放， 若程序员不释放，由垃圾回收机制回收，分配方式倒是类似于链表。
+  　　1、栈（操作系统）：由操作系统自动分配释放 ，存放函数的参数值，局部变量的值等。 
+  　　2、堆（操作系统）： 存储复杂类型(对象)，一般由程序员分配释放， 若程序员不释放，由垃圾回收机制回收。
   ```
 
 - 注意：JavaScript中没有堆和栈的概念，此处我们用堆和栈来讲解，目的方便理解和方便以后的学习。
@@ -1529,7 +1517,7 @@ console.log(obj.name); // undefined
 ![1497497865969](media/1497497865969.png)
 
 ```javascript
-// 下面代码输出的结果
+// 下面代码输出的结果?
 function Person(name,age,salary) {
   this.name = name;
   this.age = age;
@@ -1564,29 +1552,12 @@ function f1(num) {
 }
 f1(num);
 console.log(num);
-
-//3. 
-var num1 = 55;
-var num2 = 66;
-function f1(num, num1) {
-  num = 100;
-  num1 = 100;
-  num2 = 100;
-  console.log(num);
-  console.log(num1);
-  console.log(num2);
-}
-
-f1(num1, num2);
-console.log(num1);
-console.log(num2);
-console.log(num);
 ```
 ## 内置对象
 
-JavaScript中的对象分为3种：内置对象、浏览器对象、自定义对象
+JavaScript中的对象分为3种：内置对象、自定义对象、浏览器对象
 
-JavaScript 提供多个内置对象：Math/Array/Number/String/Boolean...
+JavaScript 提供多个内置对象：Math/Array/Date....
 
 对象只是带有**属性**和**方法**的特殊数据类型。
 
@@ -1683,7 +1654,7 @@ toLocaleTimeString()
 - 获取日期指定部分
 
 ```javascript
-getTime()  	  // 返回毫秒数和valueOf()结果一样，valueOf()内部调用的getTime()
+getTime()  	  // 返回毫秒数和valueOf()结果一样
 getMilliseconds() 
 getSeconds()  // 返回0-59
 getMinutes()  // 返回0-59
@@ -1726,8 +1697,8 @@ function getInterval(start, end) {
   var day, hour, minute, second, interval;
   interval = end - start;
   interval /= 1000;
-  day = Math.round(interval / 60 /60 / 24);
-  hour = Math.round(interval / 60 /60 % 24);
+  day = Math.round(interval / 60 / 60 / 24);
+  hour = Math.round(interval / 60 / 60 % 24);
   minute = Math.round(interval / 60 % 60);
   second = Math.round(interval % 60);
   return {
@@ -1796,7 +1767,7 @@ slice() 	//从当前数组中截取一个新的数组，不影响原来的数组
 splice()	//删除或替换当前数组的某些项目，参数start, deleteCount, options(要替换的项目)
 // 5 位置方法
 indexOf()、lastIndexOf()   //如果没找到返回-1
-// 6 迭代方法 不会修改原数组(可选)
+// 6 迭代方法 不会修改原数组(可选)  html5
 every()、filter()、forEach()、map()、some()
 // 7 方法将数组的所有元素连接到一个字符串中。
 join()
@@ -1916,7 +1887,7 @@ function clear() {
       }
     }
   }
-  returm tmpArray;
+  return tmpArray;
 }
 
 console.log(clear(array));
@@ -1926,7 +1897,7 @@ console.log(clear(array));
 
 ### 基本包装类型
 
-为了方便操作基本数据类型，JavaScript还提供了三个特殊的引用类型：String/Number/Boolean
+为了方便操作简单数据类型，JavaScript还提供了三个特殊的简单类型类型：String/Number/Boolean
 
 ```javascript
 // 下面代码的问题？
@@ -1983,7 +1954,7 @@ str[0]   		//HTML5，IE8+支持 和charAt()等效
 // 2 字符串操作方法
 concat()   		//拼接字符串，等效于+，+更常用
 slice()    		//从start位置开始，截取到end位置，end取不到
-substring() 	//从start位置开始，截取到end位置，end取不到
+substring() 	//从start位置开始，截取到end位置，  end取不到
 substr()   		//从start位置开始，截取length个字符
 // 3 位置方法
 indexOf()   	//返回指定内容在元字符串中的位置
@@ -1994,11 +1965,9 @@ trim()  		//只能去除字符串前后的空白
 to(Locale)UpperCase() 	//转换大写
 to(Locale)LowerCase() 	//转换小写
 // 6 其它
-search()
+search() 
 replace()
 split()
-fromCharCode()
-// String.fromCharCode(101, 102, 103);	 //把ASCII码转换成字符串
 ```
 
 #### 案例
@@ -2029,13 +1998,25 @@ console.log(array);
 
 ```javascript
 var s = 'abcoefoxyozzopp';
+var index = -1;
 do {
-  s = s.replace('o', '');
-} while (s.indexOf('o') > -1);
+  index = s.indexOf('o', index + 1);
+  if (index !== -1) {
+    // 替换
+    s = s.replace('o', '!');
+  }
+} while(index !== -1);
 console.log(s);
-
-console.log(s.replace(/o/ig, ''));
 ```
+
+- 把字符串中的所有空白去掉'   abc       xyz  a    123   '
+
+```js
+var s = '   abc       xyz  a    123   ';   
+var arr = s.split(' ');
+console.log(arr.join(''));
+```
+
 
 - 判断一个字符串中出现次数最多的字符，统计这个次数
 
@@ -2065,7 +2046,36 @@ console.log(max);
 console.log(char);
 ```
 
+- 获取url中?后面的内容，并转化成对象的形式。例如：http://www.itheima.com/login?name=zs&age=18&a=1&b=2
 
+```js
+var url = 'http://www.itheima.com/login?name=zs&age=18&a=1&b=2';
+// 获取url后面的参数
+function getParams(url) {
+  // 获取? 后面第一个字符的索引
+  var index = url.indexOf('?') + 1;
+  // url中?后面的字符串 name=zs&age=18&a=1&b=2
+  var params = url.substr(index);
+  // 使用& 切割字符串 ，返回一个数组
+  var arr = params.split('&');
+  var o = {};
+  // 数组中每一项的样子 key = value
+  for (var i = 0; i < arr.length; i++) {
+    var tmpArr = arr[i].split('=');
+    var key = tmpArr[0];
+    var value = tmpArr[1];
+
+    o[key] = value;
+  }
+  return o;
+}
+
+var obj = getParams(url);
+console.log(obj);
+
+console.log(obj.name);
+console.log(obj.age);
+```
 
 #### 作业
 
