@@ -1,0 +1,37 @@
+#parent {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background: url(../res/bg.jpg) top left/912px 701px no-repeat fixed;
+    margin: 100px auto;
+}
+
+#son {
+    position: absolute;
+    height: 300px;
+    width: 400px;
+    top: 25%;
+    left: 25%;
+    background: inherit;
+    overflow: hidden;
+    box-shadow: 0px 0px 25px -6px #959595;
+    border-radius: 30px;
+}
+
+#son:after {
+    content: "";
+    position: absolute;
+    height: 300px;
+    width: 400px;
+    background: inherit;
+    filter: blur(10px);
+    z-index: 10;
+}
+
+#content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}

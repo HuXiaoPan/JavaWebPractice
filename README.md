@@ -64,3 +64,4 @@
 
 ## 六、JQuery
 1. DOM与JQuery互转
+2. 选择器
