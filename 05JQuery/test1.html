@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- JS实现方式 -->
+    <!-- <script>
+        window.onload = function() {
+            var btn = document.getElementById("btn");
+            btn.onmousedown = function() {
+                var div = document.getElementById("dv");
+                divShow(div);
+            }
+        }
+
+        function divShow(div) {
+            div.style.width = "300px";
+            div.style.height = "600px";
+            div.style.backgroundColor = "#f40";
+        }
+    </script> -->
+    <!-- JQuery实现方式 -->
+    <script src="Js/jquery-3.3.1.js"></script>
+    <script>
+        $(function() {
+            var btn = document.getElementById("btn");
+            btn.onclick = function() {
+                    divShow(document.getElementById("dv"));
+                }
+                // DOM转jquery
+            $(btn).click(function() {
+                alert(123123);
+            });
+            // jquery转DOM
+            $("#btn").click(
+                function() {
+                    alert("我是Jquery对象！！");
+                }
+            );
+
+            $("#btn")[0].onclick = function() {
+                alert("我转成了DOM对象");
+            }
+
+            $("#btn").get(0).onclick = function() {
+                alert("我也转成了DOM对象");
+            }
+        });
+
+        function divShow(div) {
+            div.style.width = "300px";
+            div.style.height = "600px";
+            div.style.backgroundColor = "#f40";
+        }
+    </script>
+</head>
+
+<body>
+
+    <button id="btn">按钮1</button>
+    <div id="dv"></div>
+</body>
+
+
+</html>
